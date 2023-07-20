@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Jura:wght@300;400;500;600;700&display=swap');@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Jura:wght@300;400;500;600;700&display=swap');
+
+body {
+  background-color: #FFF9DB;
+  font-family: 'Jura', sans-serif;
+}
+
+.button-container-login button {
+  background-color: #E1F8FD;
+  display: inline-flex;
+  padding: 7px 86px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border: 2px solid #000;
+  font-family: Jura, sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.button-container-login {
+  display: flex;
+  gap: 110px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  gap: 50px;
+}
+
+.login-form input {
+  border: 2px solid #000;
+  background: #FFF;
+  display: inline-flex;
+  padding: 7px 297px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-family: Jura, sans-serif;
+  font-size: 30px;
+  text-align: center;
+}
+
+.login-form input::placeholder {
+  text-align: center;
+  font-family: Jura, sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 400;
+}

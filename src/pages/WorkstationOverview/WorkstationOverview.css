@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Jura:wght@300;400;500;600;700&display=swap');
+
+.workstation-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.workstation-menu button {
+    width: 400px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    background: #E1F8FD;
+    font-family: Jura, sans-serif;
+    font-size: 55px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.button-container-workstation-overview {
+    display: flex;
+    gap: 100px;
+}

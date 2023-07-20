@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Jura:wght@300;400;500;600;700&display=swap');
+
+h2 {
+    color: #000;
+    font-family: Jura, sans-serif;
+    font-size: 75px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.location-selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    gap: 50px;
+}
+
+.button-container-location {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+}
+
+.button-container-location button {
+    width: 299px;
+    height: 299px;
+    border: 1px solid #000;
+    background: #E1F8FD;
+    color: #000;
+    font-family: Jura, sans-serif;
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
