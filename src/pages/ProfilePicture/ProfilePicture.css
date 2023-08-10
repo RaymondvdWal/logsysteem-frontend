@@ -1,0 +1,27 @@
+.upload-form input::file-selector-button {
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    background-color: #E1F8FD;
+    padding: 5px;
+}
+
+.upload-form input {
+    font-family: 'Jura', sans-serif;
+}
+
+.upload-form {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.picture-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 80vh;
+}
+
+.show-picture img {
+    border: 1px solid #000000;
+}

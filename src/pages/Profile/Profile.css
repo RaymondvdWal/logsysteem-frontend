@@ -1,0 +1,38 @@
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    background-color: #E1F8FD;
+    width: 30%;
+    margin: 30px;
+    border: 1px solid #000000;
+}
+
+.user-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    margin-left: 30px;
+
+}
+
+.user-image img {
+    width: 70%;
+    border: 1px solid #000000;
+}
+
+.outer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90vh;
+}
+
+.user-info p{
+    font-size: 30px;
+    line-height: 0;
+}

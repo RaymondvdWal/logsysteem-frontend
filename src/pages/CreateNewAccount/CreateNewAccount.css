@@ -1,0 +1,40 @@
+
+.create-new-account-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 80vh;
+    font-family: 'Jura', sans-serif;
+}
+
+.create-new-account-form input, button {
+    padding: 5px;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    background: #E1F8FD;
+}
+
+.create-new-account-form input::placeholder {
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.authority-selector {
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    width: 340px;
+}
+
+
+.authority-selector option, select {
+    text-align: center;
+    background-color: #E1F8FD;
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    width: 340px;
+}
+

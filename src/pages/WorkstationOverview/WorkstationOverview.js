@@ -1,7 +1,9 @@
 import "./WorkstationOverview.css"
 import Button from "../../components/Button";
+import {useNavigate} from "react-router-dom";
 
 function WorkstationOverview() {
+    const navigate = useNavigate();
 
     return (
         <>
@@ -13,12 +15,14 @@ function WorkstationOverview() {
                 <div className={"button-container-workstation-overview"}>
                 <Button
                     buttonType={"button"}
+                    buttonOnClick={() => navigate("/operation-overview")}
                 >
                     Handelingen
                 </Button>
 
                 <Button
                     buttonType={"button"}
+                    buttonOnClick={() => navigate("/malfunction-overview")}
                 >
                     Storingen
                 </Button>

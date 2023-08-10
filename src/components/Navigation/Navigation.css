@@ -1,0 +1,36 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    border-bottom: 1px solid #000;
+    background: #E1F8FD;
+}
+
+nav button {
+    height: 80px;
+    background-color: #E1F8FD;
+    border-left: none;
+    border-bottom: none;
+    color: #000;
+    font-family: Jura, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;}
+
+.default-img {
+    height: 77px;
+}
+
+.right-button-container {
+    display: flex;
+}
+
+.create-button {
+    border-left: 1px solid #000;
+}
+
+.profile-button {
+    border-right: none;
+}

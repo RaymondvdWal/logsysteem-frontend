@@ -1,6 +1,6 @@
 
 
-function InputField({id, type, register, name, validation, children, errors, placeholderText}) {
+function InputField({id, type, register, name, validation, children, errors, placeholderText, value, onChange}) {
 
 
     return (
@@ -11,7 +11,10 @@ function InputField({id, type, register, name, validation, children, errors, pla
                     type={type}
                     id={id}
                     name={name}
+                    value={value}
                     placeholder={placeholderText}
+                    onChange={onChange}
+                    {...register(name, validation)}
                 />
             </label>
 
