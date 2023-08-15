@@ -1,0 +1,36 @@
+
+.create-new-workstation-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    height: 80vh;
+    font-family: 'Jura', sans-serif;
+}
+
+.create-new-workstation-form input {
+    padding: 5px;
+    text-align: center;
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    background: #E1F8FD;
+}
+
+.select-location {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-new-workstation-form textarea {
+    resize: none;
+    background-color: #E1F8FD;
+    font-family: 'Jura', sans-serif;
+    font-size: 15px;
+}
+
+.create-new-workstation-form textarea::placeholder {
+    text-align: center;
+}

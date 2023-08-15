@@ -1,6 +1,6 @@
 
 
-function InputField({id, type, register, name, validation, children, errors, placeholderText, value, onChange}) {
+function InputField({id, type, register, name, validation, editable, children, errors, placeholderText, value, onChange}) {
 
 
     return (
@@ -14,6 +14,7 @@ function InputField({id, type, register, name, validation, children, errors, pla
                     value={value}
                     placeholder={placeholderText}
                     onChange={onChange}
+                    contentEditable={editable}
                     {...register(name, validation)}
                 />
             </label>

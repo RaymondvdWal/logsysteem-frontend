@@ -95,6 +95,12 @@ function CreateNewAccount() {
                 children={"Rol: "}
                 register={register}
                 name="authority"
+                value1={"user"}
+                option1={"Medewerker"}
+                value2={"moderator"}
+                option2={"Specialist"}
+                value3={"admin"}
+                option3={"Admin"}
             />
 
             <Button

@@ -6,25 +6,24 @@ import {useForm} from "react-hook-form";
 import axios from "axios";
 import Textarea from "../../components/Textarea";
 import {useContext} from "react";
-import {LocationContext} from "../../context/LocationContext";
 import {AuthContext} from "../../context/AuthContext";
 
 function CreateNewWorkstation() {
 
-    const {location:{location}} = useContext(LocationContext)
-    const {auth: {user: {username}}} = useContext(AuthContext)
+    const {auth: {user}} = useContext(AuthContext)
     const {register, handleSubmit} = useForm()
 
     async function createWorkstation(data, e) {
-        console.log(location.toUpperCase(), username)
+        console.log(user)
+        console.log(data)
         try {
             const POST_URL = "http://localhost:8080/workstation/new"
             const response = await axios.post(POST_URL, {
                 name: data.name,
                 pushMessage: data.pushMessage,
                 generalMessage: data.generalMessage,
-                location: location.toUpperCase(),
-                user: username
+                location: data.location,
+                user: data.user
             }, {
                 headers: {
                     'Content-Type': "application/json",
@@ -43,7 +42,7 @@ function CreateNewWorkstation() {
     }
 
     return(
-        <form className={"create-new-account-form"} onSubmit={handleSubmit(createWorkstation)}>
+        <form className={"create-new-workstation-form"} onSubmit={handleSubmit(createWorkstation)}>
             <InputField
                 id={"name-field"}
                 register={register}
@@ -68,6 +67,19 @@ function CreateNewWorkstation() {
                 rows={10}
                 cols={70}
                 placeholderText={"Ruimte voor een belangrijke melding"}
+            />
+
+            <Select
+                className={"select-location"}
+                children={"Selecteer de locatie"}
+                register={register}
+                name={"location"}
+                value1={"UTRECHT"}
+                option1={"Utrecht"}
+                value2={"NIEUWEGEIN"}
+                option2={"Nieuwegein"}
+                value3={"WOERDEN"}
+                option3={"Woerden"}
             />
 
             <Button
