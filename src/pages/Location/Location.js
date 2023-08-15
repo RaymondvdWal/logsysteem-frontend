@@ -1,10 +1,20 @@
 import "./Location.css"
 import Button from "../../components/Button";
 import {useNavigate} from "react-router-dom";
-
+import {useContext} from "react";
+import {LocationContext} from "../../context/LocationContext";
 
 function Location() {
+    const {myLocation} = useContext(LocationContext)
     const navigate  = useNavigate();
+
+    function setLocation(e) {
+        myLocation(e);
+        navigate("/choose-workstation")
+    }
+
+
+
 
     return (
         <>
@@ -14,21 +24,24 @@ function Location() {
                 <div className={"button-container-location"}>
                     <Button
                         buttonType={"button"}
-                        buttonOnClick={(() => navigate("/choose-workstation"))}
+                        buttonOnClick={setLocation}
+                        value={"Utrecht"}
                     >
                         Utrecht
                     </Button>
 
                     <Button
                         buttonType={"button"}
-                        buttonOnClick={(() => navigate("/choose-workstation"))}
+                        buttonOnClick={setLocation}
+                        value={"Nieuwegein"}
                     >
                         Nieuwegein
                     </Button>
 
                     <Button
                         buttonType={"button"}
-                        buttonOnClick={(() => navigate("/choose-workstation"))}
+                        buttonOnClick={(setLocation)}
+                        value={"Woerden"}
                     >
                         Woerden
                     </Button>

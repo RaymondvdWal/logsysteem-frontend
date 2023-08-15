@@ -10,6 +10,8 @@ import MalfunctionOverview from "./pages/MalfunctionOverview/MalfunctionOverview
 import CreateNewAccount from "./pages/CreateNewAccount/CreateNewAccount";
 import Profile from "./pages/Profile/Profile";
 import ProfilePicture from "./pages/ProfilePicture/ProfilePicture";
+import CreateNewWorkstation from "./pages/CreateNewWorkstation/CreateNewWorkstation";
+import CreateNew from "./pages/CreateNew/CreateNew";
 
 function App() {
   return (
@@ -19,7 +21,9 @@ function App() {
           <Routes>
             <Route path={"/"} element={<Login/>}/>
             <Route path={"/location"} element={<Location/>}/>
+            <Route path={"/create"} element={<CreateNew/>}/>
             <Route path={"/choose-workstation"} element={<WorkstationSelection/>}/>
+            <Route path={"new-workstation"} element={<CreateNewWorkstation/>}/>
             <Route path={"/choose-workstation/workstation-overview"} element={<WorkstationOverview/>}/>
             <Route path={"operation-overview"} element={<OperationOverview/>}/>
             <Route path={"malfunction-overview"} element={<MalfunctionOverview/>}/>

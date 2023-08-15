@@ -4,10 +4,12 @@ import defaultProfilePicture from "../../assets/Tijdelijke profielfoto.jpg"
 import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
+import {LocationContext} from "../../context/LocationContext";
 
 function Navigation() {
         const navigate = useNavigate();
         const {logout, auth: {user, isAuth}} = useContext(AuthContext);
+        const {location} = useContext(LocationContext)
 
 
     return (
@@ -42,11 +44,13 @@ function Navigation() {
                 </Button>
             </div>
 
+            <p>{location.location}</p>
+
             <div className={"right-button-container"}>
                 <Button
                     className={"create-button"}
                     buttonType={"button"}
-                    buttonOnClick={() => navigate("/create-new-account")}
+                    buttonOnClick={() => navigate("/create")}
                 >
                     Aanmaken
                 </Button>

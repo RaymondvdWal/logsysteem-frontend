@@ -27,7 +27,7 @@ function AuthContextProvider({children}) {
                 ...auth,
                 isAuth: false,
                 user: null,
-                status: "done"
+                status: "done",
             })
         }
     },[]);

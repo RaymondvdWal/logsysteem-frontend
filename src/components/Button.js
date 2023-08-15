@@ -1,5 +1,5 @@
 
-function Button({children, buttonType, buttonOnClick, className}) {
+function Button({children, buttonType, buttonOnClick, className, value}) {
 
     return (
         <>
@@ -7,6 +7,7 @@ function Button({children, buttonType, buttonOnClick, className}) {
               className={className}
               type={buttonType}
               onClick={buttonOnClick}
+              value={value}
            >
                {children}
            </button>

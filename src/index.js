@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthContextProvider from "./context/AuthContext";
+import LocationContextProvider, {LocationContext} from "./context/LocationContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
         <AuthContextProvider>
-            <App />
+            <LocationContextProvider>
+               <App />
+            </LocationContextProvider>
         </AuthContextProvider>
     </Router>
   </React.StrictMode>
