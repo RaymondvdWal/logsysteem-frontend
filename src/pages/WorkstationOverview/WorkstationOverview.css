@@ -21,6 +21,14 @@
     font-weight: 400;
 }
 
+.workstation-menu section {
+    margin-top: 75px;
+    font-size: 20px;
+    border: 1px solid #000000;
+    background-color: #E1F8FD;
+    padding: 25px 415px;
+}
+
 .button-container-workstation-overview {
     display: flex;
     gap: 100px;

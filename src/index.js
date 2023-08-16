@@ -6,15 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthContextProvider from "./context/AuthContext";
 import LocationContextProvider, {LocationContext} from "./context/LocationContext";
+import WorkstationContextProvider from "./context/WorkstationContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
         <AuthContextProvider>
-            <LocationContextProvider>
-               <App />
-            </LocationContextProvider>
+            <WorkstationContextProvider>
+                <LocationContextProvider>
+                   <App />
+                </LocationContextProvider>
+            </WorkstationContextProvider>
         </AuthContextProvider>
     </Router>
   </React.StrictMode>

@@ -21,6 +21,13 @@ function CreateNew() {
         >
             Account
         </Button>
+
+        <Button
+            buttonType={"onClick"}
+            buttonOnClick={(() => {navigate("/new-operation")})}
+        >
+            Handeling
+        </Button>
     </>
     )
 }

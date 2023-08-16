@@ -1,9 +1,10 @@
 import axios from "axios";
-import {createContext, useEffect, useState} from "react";
+import {createContext, useContext, useEffect, useState} from "react";
 import jwt_decode from "jwt-decode";
 import {useNavigate} from "react-router-dom";
 import {checkTokenValidity} from "../pages/helper/checkTokenValidity";
 import defaultProfilePicture from "../assets/Tijdelijke profielfoto.jpg"
+import {LocationContext} from "./LocationContext";
 
 
 export const AuthContext = createContext(null);
@@ -123,6 +124,7 @@ function AuthContextProvider({children}) {
             user: null
         });
         navigate('/')
+        window.location.reload()
         console.log("logout")
     }
 

@@ -10,12 +10,9 @@ import {AuthContext} from "../../context/AuthContext";
 
 function CreateNewWorkstation() {
 
-    const {auth: {user}} = useContext(AuthContext)
     const {register, handleSubmit} = useForm()
 
     async function createWorkstation(data, e) {
-        console.log(user)
-        console.log(data)
         try {
             const POST_URL = "http://localhost:8080/workstation/new"
             const response = await axios.post(POST_URL, {
@@ -23,7 +20,6 @@ function CreateNewWorkstation() {
                 pushMessage: data.pushMessage,
                 generalMessage: data.generalMessage,
                 location: data.location,
-                user: data.user
             }, {
                 headers: {
                     'Content-Type': "application/json",
