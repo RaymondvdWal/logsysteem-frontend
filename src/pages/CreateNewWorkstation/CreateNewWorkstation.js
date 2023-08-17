@@ -70,12 +70,13 @@ function CreateNewWorkstation() {
                 children={"Selecteer de locatie"}
                 register={register}
                 name={"location"}
-                value1={"UTRECHT"}
-                option1={"Utrecht"}
-                value2={"NIEUWEGEIN"}
-                option2={"Nieuwegein"}
-                value3={"WOERDEN"}
-                option3={"Woerden"}
+                option={
+                        <>
+                          <option value={"UTRECHT"}>Utrecht</option>
+                          <option value={"NIEUWEGEIN"}>Nieuwegein</option>
+                          <option value={"WOERDEN"}>Woerden</option>
+                        </>
+                }
             />
 
             <Button

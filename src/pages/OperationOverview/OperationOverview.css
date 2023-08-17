@@ -1,17 +1,35 @@
-.rdt_TableCell {
+
+.table-container{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.operation-table {
+    border-collapse: collapse;
+    font-size: 30px;
+
+}
+
+.operation-table thead {
     background-color: #E1F8FD;
 }
 
-.rdt_TableHeader {
-    background-color: #FFF9DB;
-    width: 75%;
+.operation-table th {
+    border: 3px solid #000000;
+    padding: 10px 100px;
 }
 
-.rdt_TableCol {
+.operation-table tbody {
     background-color: #E1F8FD;
-    width: 75%;
 }
 
-
+.operation-table td {
+    border: 1px solid #000000;
+    padding: 10px 100px;
+}
 
 

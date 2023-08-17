@@ -13,6 +13,7 @@ import ProfilePicture from "./pages/ProfilePicture/ProfilePicture";
 import CreateNewWorkstation from "./pages/CreateNewWorkstation/CreateNewWorkstation";
 import CreateNew from "./pages/CreateNew/CreateNew";
 import CreateNewOperation from "./pages/CreateNewOperation/CreateNewOperation";
+import Operation from "./pages/Operation/Operation";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
             <Route path={"new-workstation"} element={<CreateNewWorkstation/>}/>
             <Route path={"/choose-workstation/:id"} element={<WorkstationOverview/>}/>
             <Route path={"operation-overview/:id"} element={<OperationOverview/>}/>
+            <Route path={"/operation/:id"} element={<Operation/>}/>
             <Route path={"/new-operation"} element={<CreateNewOperation/>}/>
             <Route path={"malfunction-overview/:id"} element={<MalfunctionOverview/>}/>
             <Route path={"/create-new-account"} element={<CreateNewAccount/>}/>

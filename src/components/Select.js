@@ -1,5 +1,5 @@
 
-function Select({children, className,register, name, validation, value1, value2, value3, option1, option2, option3}) {
+function Select({children, className,register,option, name, validation, value1, value2, value3, option1, option2, option3}) {
 
 
     return (
@@ -8,9 +8,10 @@ function Select({children, className,register, name, validation, value1, value2,
             <select
                 {...register(name, validation)}
             >
-                <option value={value1}>{option1}</option>
+                {option}
+                {/*<option value={value1}>{option1}</option>
                 <option value={value2}>{option2}</option>
-                <option value={value3}>{option3}</option>
+                <option value={value3}>{option3}</option>*/}
             </select>
 
 

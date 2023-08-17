@@ -1,48 +1,88 @@
 import "./OperationOverview.css"
-import DataTable from "react-data-table-component"
-import {useState, useEffect} from "react";
+import {useState, useEffect, useContext} from "react";
+import axios from "axios";
+import {LocationContext} from "../../context/LocationContext";
+import {Link, useParams} from "react-router-dom";
 
 function OperationOverview() {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    const columns = [
-        {
-            name: "User ID",
-            selector: (row) => row.userId
-        },
-        {
-            name: "Title",
-            selector: (row) => row.title
-        },
-        {
-            name: "Completed",
-            selector: (row) => row.completed ? "Yes" : "No"
-        }
-    ]
+    const {id} = useParams()
+    const {location: {location}} = useContext(LocationContext)
+    const [operations, setOperations] = useState([{
+        comment: null,
+        dateIndication: null,
+        device: null,
+        finishedBy: null,
+        id: null,
+        instruction: null,
+        name: null,
+        operationDone: null,
+        operationPickedUp: null,
+        pickedUpBy: null,
+        status: null,
+        timeIndication: null,
+        workstation: null,
+    }])
 
     useEffect(() => {
-        fetchTableData()
-    }, [])
+        getOperations()
+    },[])
+    async function getOperations() {
+        try{
+            const URL = `http://localhost:8080/operation`
+            const response = await axios.get(URL, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                }, responseType: "json"
+            })
+            console.log(response)
 
-    async function fetchTableData() {
-        setLoading(true)
-        const URL = "https://jsonplaceholder.typicode.com/todos"
-        const response = await fetch(URL)
+            let uniqueData = [...new Map(response.data.map((item) => [item["id"], item])).values()]
+            console.log(uniqueData)
 
-        const users = await response.json();
-        setData(users);
-        setLoading(false)
+            const assignedData = uniqueData.filter((operation) => {
+                return operation.workStation
+            })
+
+            const operationsAssignedToWorkstation = assignedData.filter((operations) => {
+                return operations.workStation.id == id
+                })
+
+            console.log(operationsAssignedToWorkstation)
+
+
+            console.log(assignedData)
+            setOperations(operationsAssignedToWorkstation)
+            console.log(operations)
+        } catch (e) {
+            console.error("failed", e)
+        }
     }
     return (
-            <DataTable
-                className={"rdt_TableCell rdt_TableHeader rdt_TableCol rdt_TableRow rdt_TableHeadRow rdt_Table"}
-                title={"Data"}
-                columns={columns}
-                data={data}
-                progressPending={loading}
-                pagination
-            />
+        <>
+
+            <div className={"table-container"}>
+               <table className={"operation-table"}>
+                   <thead>
+                        <tr>
+                            <th>Handelingen</th>
+                            <th>Status</th>
+                            <th>Wie</th>
+                        </tr>
+                   </thead>
+                   <tbody>
+                        {operations.map((operation) => {
+                            return <tr>
+                                    <td><Link to={`/operation/${operation.id}`}>{operation.name}</Link></td>
+                                    <td>{operation.status}</td>
+                                    <td>{operation.pickedUpBy}</td>
+                                    </tr>
+                            })
+                        }
+                   </tbody>
+               </table>
+            </div>
+
+        </>
 
     )
 }

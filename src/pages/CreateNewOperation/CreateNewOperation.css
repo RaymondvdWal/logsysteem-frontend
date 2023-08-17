@@ -1,0 +1,23 @@
+
+
+.create-new-operation-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    gap: 30px;
+}
+
+.create-new-operation-form input {
+    font-size: 30px;
+    font-family: 'Jura', sans-serif;
+    text-align: center;
+    background-color: #E1F8FD;
+}
+
+.status-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

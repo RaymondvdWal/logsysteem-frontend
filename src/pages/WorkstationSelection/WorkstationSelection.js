@@ -1,20 +1,20 @@
 import "./WorkstationSelection.css"
 import {Link} from "react-router-dom";
 import axios from "axios";
-import {useContext, useEffect} from "react";
+import {useContext, useEffect, useState} from "react";
 import {LocationContext} from "../../context/LocationContext";
 import {WorkstationContext} from "../../context/WorkstationContext";
 
 function WorkstationSelection() {
     const {location:{location}} = useContext(LocationContext)
     const {workstations, setWorkstation} = useContext(WorkstationContext)
-   /* const [workstations, setWorkstation] = useState([{
+    const [myWorkstations, setMyWorkstation] = useState([{
         id: null,
         name: null,
         generalMessage: null,
         pushMessage: null,
         location: null,
-    }])*/
+    }])
 
     async function getWorkstations() {
         try {
@@ -37,12 +37,14 @@ function WorkstationSelection() {
             let uniqueData = [...new Map(data.map((item) => [item["id"], item])).values()]
             console.log(uniqueData)
             console.log(location)
+            setWorkstation(uniqueData)
 
             if (uniqueData.length > 0 && location != null){
                 const locationData = uniqueData.filter((workstation) => {
                     return workstation.location === location.toUpperCase()
                 })
-                setWorkstation(locationData)
+                setMyWorkstation(locationData)
+                console.log(myWorkstations)
                 console.log(workstations)
                 console.log(locationData)
             }
@@ -61,7 +63,7 @@ function WorkstationSelection() {
             <form className={"workstation-selector"}>
 
                     <ul className={"workstation-tile"}>
-                        {workstations.map((workstation) => {
+                        {myWorkstations.map((workstation) => {
                             return <li><Link className={"workstation-link"} to={`/choose-workstation/${workstation.id}`}>{workstation.name}</Link></li>
                         })}
                     </ul>

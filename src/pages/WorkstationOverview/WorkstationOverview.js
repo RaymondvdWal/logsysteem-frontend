@@ -28,6 +28,7 @@ function WorkstationOverview() {
             // console.log(workstationData)
             setWorkstation(workstationData)
             // console.log(workstation)
+            console.log(response)
 
         } catch (e) {
             console.error("something went wrong", e)
