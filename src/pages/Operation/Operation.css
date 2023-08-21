@@ -1,0 +1,31 @@
+
+.table-container {
+    gap: 0;
+    height: 50vh;
+}
+
+.first-table {
+    padding: 10px 500px;
+    height: 250px;
+    width: 1300px;
+}
+
+.button-container-operation {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.start-button {
+    padding: 10px 60px;
+    background-color: #C7F2C0;
+}
+
+.change-button {
+    padding: 10px 40px;
+    background-color: #FBD7A1;
+}
+
+.stop-button {
+    padding: 10px 60px;
+    background-color: #F9AAAA;
+}

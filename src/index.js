@@ -7,6 +7,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import AuthContextProvider from "./context/AuthContext";
 import LocationContextProvider, {LocationContext} from "./context/LocationContext";
 import WorkstationContextProvider from "./context/WorkstationContext";
+import OperationContextProvider from "./context/OperationContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,9 @@ root.render(
         <AuthContextProvider>
             <WorkstationContextProvider>
                 <LocationContextProvider>
-                   <App />
+                    <OperationContextProvider>
+                        <App />
+                    </OperationContextProvider>
                 </LocationContextProvider>
             </WorkstationContextProvider>
         </AuthContextProvider>

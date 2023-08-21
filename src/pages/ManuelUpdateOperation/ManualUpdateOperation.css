@@ -1,0 +1,23 @@
+
+.manual-update-operation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    gap: 50px;
+}
+
+.manual-update-operation input {
+    font-size: 30px;
+    font-family: 'Jura', sans-serif;
+    background-color: #E1F8FD;
+    text-align: center;
+}
+
+.manual-update-operation label {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}

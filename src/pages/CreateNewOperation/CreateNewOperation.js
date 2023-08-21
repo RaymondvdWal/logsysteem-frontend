@@ -26,12 +26,7 @@ function CreateNewOperation() {
         }
     }
 
-    const options = [
-        {ONGEDAAN: "Ongedaan"},
-        {BEZIG: "Bezig"},
-        {KLAAR: "klaar"},
-    ]
-    async function createOperation(data) {
+    async function createOperation(data, e) {
         try {
             console.log(data)
             const POST_URL = `http://localhost:8080/operation/new`;
@@ -51,6 +46,14 @@ function CreateNewOperation() {
             })
             await assignOperationToWorkstation(response, data)
             console.log(response)
+            e.target[0].value = ""
+            e.target[1].value = ""
+            e.target[2].value = ""
+            e.target[3].value = ""
+            e.target[4].value = ""
+            e.target[5].value = ""
+            e.target[6].value = ""
+            e.target[7].value = ""
         } catch (e) {
             console.error("failed", e)
         }

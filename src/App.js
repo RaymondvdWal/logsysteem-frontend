@@ -14,6 +14,7 @@ import CreateNewWorkstation from "./pages/CreateNewWorkstation/CreateNewWorkstat
 import CreateNew from "./pages/CreateNew/CreateNew";
 import CreateNewOperation from "./pages/CreateNewOperation/CreateNewOperation";
 import Operation from "./pages/Operation/Operation";
+import ManualUpdateOperation from "./pages/ManuelUpdateOperation/ManualUpdateOperation";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path={"operation-overview/:id"} element={<OperationOverview/>}/>
             <Route path={"/operation/:id"} element={<Operation/>}/>
             <Route path={"/new-operation"} element={<CreateNewOperation/>}/>
+            <Route path={"/update-operation/:id"} element={<ManualUpdateOperation/>}/>
             <Route path={"malfunction-overview/:id"} element={<MalfunctionOverview/>}/>
             <Route path={"/create-new-account"} element={<CreateNewAccount/>}/>
             <Route path={"/profile"} element={<Profile/>}/>
