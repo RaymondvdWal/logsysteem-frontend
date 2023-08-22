@@ -28,6 +28,13 @@ function CreateNew() {
         >
             Handeling
         </Button>
+
+        <Button
+            buttonType={"onClick"}
+            buttonOnClick={(() => {navigate("/new-malfunction")})}
+        >
+            Storing
+        </Button>
     </>
     )
 }

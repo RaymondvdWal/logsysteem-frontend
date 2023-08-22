@@ -15,6 +15,9 @@ import CreateNew from "./pages/CreateNew/CreateNew";
 import CreateNewOperation from "./pages/CreateNewOperation/CreateNewOperation";
 import Operation from "./pages/Operation/Operation";
 import ManualUpdateOperation from "./pages/ManuelUpdateOperation/ManualUpdateOperation";
+import CreateNewMalfunction from "./pages/CreateNewMalfunction/CreateNewMalfunction";
+import Malfunction from "./pages/Malfunction/Malfunction";
+import UpdateMalfunction from "./pages/UpdateMalfunction/UpdateMalfunction";
 
 function App() {
   return (
@@ -28,11 +31,14 @@ function App() {
             <Route path={"/choose-workstation"} element={<WorkstationSelection/>}/>
             <Route path={"new-workstation"} element={<CreateNewWorkstation/>}/>
             <Route path={"/choose-workstation/:id"} element={<WorkstationOverview/>}/>
-            <Route path={"operation-overview/:id"} element={<OperationOverview/>}/>
+            <Route path={"/operation-overview/:id"} element={<OperationOverview/>}/>
             <Route path={"/operation/:id"} element={<Operation/>}/>
             <Route path={"/new-operation"} element={<CreateNewOperation/>}/>
             <Route path={"/update-operation/:id"} element={<ManualUpdateOperation/>}/>
-            <Route path={"malfunction-overview/:id"} element={<MalfunctionOverview/>}/>
+            <Route path={"/malfunction-overview/:id"} element={<MalfunctionOverview/>}/>
+            <Route path={"/malfunction/:id"} element={<Malfunction/>}/>
+            <Route path={"/update-malfunction/:id"} element={<UpdateMalfunction/>}/>
+            <Route path={"/new-malfunction"} element={<CreateNewMalfunction/>}/>
             <Route path={"/create-new-account"} element={<CreateNewAccount/>}/>
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/profile-picture"} element={<ProfilePicture/>}/>

@@ -6,7 +6,6 @@ import {Link, useParams} from "react-router-dom";
 
 function OperationOverview() {
     const {id} = useParams()
-    const {location: {location}} = useContext(LocationContext)
     const [operations, setOperations] = useState([{
         comment: null,
         dateIndication: null,
@@ -74,7 +73,7 @@ function OperationOverview() {
                             return <tr>
                                     <td><Link to={`/operation/${operation.id}`}>{operation.name}</Link></td>
                                     <td>{operation.status}</td>
-                                    <td>{operation.pickedUpBy}</td>
+                                    <td>{operation.finishedBy === null ? operation.pickedUpBy : operation.finishedBy}</td>
                                     </tr>
                             })
                         }

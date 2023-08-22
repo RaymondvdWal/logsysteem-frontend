@@ -6,7 +6,7 @@ import {LocationContext} from "../../context/LocationContext";
 import {WorkstationContext} from "../../context/WorkstationContext";
 
 function WorkstationSelection() {
-    const {location:{location}} = useContext(LocationContext)
+    const {location:{location}, setLocation} = useContext(LocationContext)
     const {workstations, setWorkstation} = useContext(WorkstationContext)
     const [myWorkstations, setMyWorkstation] = useState([{
         id: null,
@@ -15,6 +15,10 @@ function WorkstationSelection() {
         pushMessage: null,
         location: null,
     }])
+
+    useEffect(() => {
+        getWorkstations()
+    },[location])
 
     async function getWorkstations() {
         try {
@@ -33,7 +37,6 @@ function WorkstationSelection() {
             })
             console.log(data)
             console.log(response)
-
             let uniqueData = [...new Map(data.map((item) => [item["id"], item])).values()]
             console.log(uniqueData)
             console.log(location)
@@ -54,9 +57,7 @@ function WorkstationSelection() {
         }
     }
 
-    useEffect(() => {
-        getWorkstations()
-    },[])
+
 
     return (
         <>
@@ -64,7 +65,7 @@ function WorkstationSelection() {
 
                     <ul className={"workstation-tile"}>
                         {myWorkstations.map((workstation) => {
-                            return <li><Link className={"workstation-link"} to={`/choose-workstation/${workstation.id}`}>{workstation.name}</Link></li>
+                            return <li><Link className={"workstation-link"} to={`/choose-workstation/${workstation.id}`} onClick={() => {localStorage.setItem("workstationId", workstation.id)}}>{workstation.name}</Link></li>
                         })}
                     </ul>
 

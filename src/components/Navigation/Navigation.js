@@ -5,12 +5,13 @@ import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import {LocationContext} from "../../context/LocationContext";
+import {WorkstationContext} from "../../context/WorkstationContext";
 
 function Navigation() {
         const navigate = useNavigate();
         const {logout, auth: {user, isAuth}} = useContext(AuthContext);
         const {location} = useContext(LocationContext)
-
+        const {workstations} = useContext(WorkstationContext)
 
     return (
         <nav>
@@ -31,20 +32,20 @@ function Navigation() {
 
                 <Button
                     buttonType={"button"}
-                    buttonOnClick={() => navigate("operation-overview")}
+                    buttonOnClick={() => navigate(`operation-overview/${localStorage.getItem("workstationId")}`)}
                 >
                     Handelingen
                 </Button>
 
                 <Button
                     buttonType={"button"}
-                    buttonOnClick={() => navigate("malfunction-overview")}
+                    buttonOnClick={() => navigate(`malfunction-overview/${localStorage.getItem("workstationId")}`)}
                 >
                     Storingen
                 </Button>
             </div>
 
-            <p>{location.location}</p>
+            {isAuth && <p>{location.location}</p>}
 
             <div className={"right-button-container"}>
                 <Button

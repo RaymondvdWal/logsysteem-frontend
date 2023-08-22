@@ -20,7 +20,6 @@ function AuthContextProvider({children}) {
     
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
-        
         if (storedToken && checkTokenValidity(storedToken)) {
             void login(storedToken)
         } else {
@@ -105,12 +104,10 @@ function AuthContextProvider({children}) {
                 })
             } else {
                 await getLoadProfilePicture(username, email, firstname, lastname, password, profilePicture, workStation)
-
             }
             if (redirect) {
                 navigate("/location")
             }
-            
         } catch (error) {
             return alert("failure")
         }
@@ -124,7 +121,6 @@ function AuthContextProvider({children}) {
             user: null
         });
         navigate('/')
-        window.location.reload()
         console.log("logout")
     }
 

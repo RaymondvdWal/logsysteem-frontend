@@ -2,7 +2,7 @@ import './Login.css'
 import InputField from "../../components/InputField";
 import {useForm} from "react-hook-form";
 import Button from "../../components/Button";
-import {useContext} from "react";
+import {useContext, useEffect} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 function Login() {

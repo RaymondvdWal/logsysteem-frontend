@@ -1,17 +1,17 @@
-import "./Operation.css"
+import "./Malfunction.css"
 import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
 import {useContext, useEffect, useState} from "react";
 import Button from "../../components/Button";
-import {OperationContext} from "../../context/OperationContext";
+import {MalfunctionContext} from "../../context/MalfunctionContext";
 
-function Operation() {
+
+function Malfunction() {
+
     const {id} = useParams()
-    const {operation, setOperation} = useContext(OperationContext)
     const [startTime, setStartTime] = useState()
     const [endTime, setEndTime] = useState()
-    const UPDATE_URL = `http://localhost:8080/operation/${id}`
-    const dayTime = new Date();
+    const {malfunction, setMalfunction} = useContext(MalfunctionContext)
     const dateTimeOptions ={
         weekday: "short",
         month: "long",
@@ -23,29 +23,29 @@ function Operation() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        getOperation()
+        getMalfunction()
     },[])
 
-    async function getOperation() {
+    async function getMalfunction() {
         try {
-            const GET_URL = `http://localhost:8080/operation/${id}`
+            const GET_URL = `http://localhost:8080/malfunction/${id}`
             const response = await axios.get(GET_URL, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
             console.log(response)
-            setOperation(response.data)
-            if (response.data.operationPickedUp != null) {
-                const startTime = new Date(response.data.operationPickedUp)
+            setMalfunction(response.data)
+            if (response.data.createMalfunction != null) {
+                const startTime = new Date(response.data.createMalfunction)
                 const convertedstartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
                 console.log(startTime)
                 console.log(convertedstartTime)
                 setStartTime(convertedstartTime)
 
             }
-            if (response.data.operationDone != null) {
-                const endTime = new Date(response.data.operationDone)
+            if (response.data.updateMalfunction != null) {
+                const endTime = new Date(response.data.updateMalfunction)
                 const convertedEndTime = endTime.toLocaleTimeString("nl-NL", dateTimeOptions)
                 setEndTime(convertedEndTime)
             }
@@ -54,18 +54,19 @@ function Operation() {
         }
     }
 
-    async function startStopOperation(e) {
+    async function finishMalfunction(e) {
         try {
+            const UPDATE_URL = `http://localhost:8080/malfunction/${id}`
             const response = await axios.put(UPDATE_URL, {
-                ...operation,
+                ...malfunction,
                 status: e.target.value
             }, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            setOperation(response.data)
-            await getOperation()
+            setMalfunction(response.data)
+            await getMalfunction()
             console.log(response)
         } catch (e) {
             console.error("failed", e)
@@ -76,18 +77,22 @@ function Operation() {
     return(
         <section className={"operation-section"}>
 
-            <h2>{operation.name}</h2>
+            <h2>{malfunction.title}</h2>
 
             <div className={"table-container"}>
                 <table className={"operation-table first-table"}>
                     <thead className={"operation-inner-table"}>
                     <tr>
                         <th>Beschrijving</th>
+                        <th>Acties</th>
+                        <th>Oplossing</th>
                     </tr>
                     </thead>
                     <tbody className={"operation-inner-table"}>
                     <tr>
-                        <td>{operation.instruction}</td>
+                        <td>{malfunction.description}</td>
+                        <td>{malfunction.action}</td>
+                        <td>{malfunction.solution}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -95,16 +100,14 @@ function Operation() {
                     <thead>
                     <tr>
                         <th>Status:</th>
-                        <th>Wie:</th>
-                        <th>Begintijd:</th>
-                        <th>Eindtijd:</th>
+                        <th>Begin:</th>
+                        <th>Eind:</th>
                     </tr>
                     </thead>
 
                     <tbody>
                     <tr>
-                        <td>{operation.status}</td>
-                        <td>{operation.finishedBy === null ? operation.pickedUpBy : operation.finishedBy}</td>
+                        <td>{malfunction.status}</td>
                         <td>{startTime}</td>
                         <td>{endTime}</td>
                     </tr>
@@ -116,16 +119,15 @@ function Operation() {
                 <Button
                     className={"start-button"}
                     buttonType={"onClick"}
-                    value={"BEZIG"}
-                    buttonOnClick={startStopOperation}
+                    buttonOnClick={() => navigate("/new-malfunction")}
                 >
-                    Start
+                    Nieuwe Storing
                 </Button>
 
                 <Button
                     className={"change-button"}
                     buttonType={"onClick"}
-                    buttonOnClick={() => {navigate(`/update-operation/${id}`)}}
+                    buttonOnClick={() => {navigate(`/update-malfunction/${id}`)}}
                 >
                     Wijzigen
                 </Button>
@@ -134,9 +136,9 @@ function Operation() {
                     className={"stop-button"}
                     buttonType={"onClick"}
                     value={"KLAAR"}
-                    buttonOnClick={startStopOperation}
+                    buttonOnClick={finishMalfunction}
                 >
-                    Stop
+                    Afronden
                 </Button>
             </div>
 
@@ -145,4 +147,4 @@ function Operation() {
     )
 }
 
-export default Operation
+export default Malfunction

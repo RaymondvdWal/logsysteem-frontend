@@ -1,0 +1,26 @@
+
+.create-new-malfunction {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    height: 90vh;
+}
+
+.create-new-malfunction input {
+    font-family: 'Jura', sans-serif;
+    font-size: 30px;
+    background-color: #E1F8FD;
+    text-align: center;
+}
+
+.create-new-malfunction textarea {
+    background-color: #E1F8FD;
+    resize: none;
+    font-size: 15px;
+}
+
+.create-new-malfunction textarea::placeholder{
+    text-align: center;
+}

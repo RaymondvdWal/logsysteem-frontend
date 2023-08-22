@@ -1,11 +1,12 @@
 
-function Select({children, className,register,option, name, validation, value1, value2, value3, option1, option2, option3}) {
+function Select({children, className,register, defaultValue,option, name, validation, value1, value2, value3, option1, option2, option3}) {
 
 
     return (
         <label className={className}>
             {children}
             <select
+                defaultValue={defaultValue}
                 {...register(name, validation)}
             >
                 {option}

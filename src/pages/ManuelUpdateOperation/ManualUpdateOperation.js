@@ -3,17 +3,23 @@ import Select from "../../components/Select";
 import {useForm} from "react-hook-form";
 import InputField from "../../components/InputField";
 import Button from "../../components/Button";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import {useContext} from "react";
+import {useContext, useEffect, useState} from "react";
 import {OperationContext} from "../../context/OperationContext";
 import {AuthContext} from "../../context/AuthContext";
 
 function ManualUpdateOperation() {
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, watch} = useForm()
     const {id} = useParams()
     const {operation, setOperation} = useContext(OperationContext)
     const {auth: {user}} = useContext(AuthContext)
+    const [selectedStatus, setSelectedStatus] = useState()
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        setSelectedStatus("ONGEDAAN")
+    },[])
 
     async function updateOperation(data) {
         try {
@@ -31,17 +37,24 @@ function ManualUpdateOperation() {
                 }, responseType: "json"
             })
             console.log(response)
+            navigate(`/operation/${id}`)
         } catch (e) {
             console.error("failed", e)
         }
+    }
 
+    function statusChecker() {
+        const selectedStatus = watch("status", "default")
+        console.log(selectedStatus)
+        setSelectedStatus(selectedStatus)
     }
 
     return (
-        <form onSubmit={handleSubmit(updateOperation)} className={"manual-update-operation"}>
+        <form onSubmit={handleSubmit(updateOperation)} className={"manual-update-operation"} onChange={statusChecker}>
             <Select
             register={register}
             name={"status"}
+            defaultValue={"ONGEDAAN"}
             option={
                 <>
                     <option value={"ONGEDAAN"}>Ongedaan</option>
@@ -51,11 +64,11 @@ function ManualUpdateOperation() {
             />
 
             <InputField
-
                 register={register}
                 name={"operationPickedUp"}
                 type={"datetime-local"}
                 children={"starttijd:"}
+                disable={selectedStatus === "ONGEDAAN"}
             />
 
             <InputField
@@ -63,6 +76,7 @@ function ManualUpdateOperation() {
                 name={"operationDone"}
                 type={"datetime-local"}
                 children={"eindtijd:"}
+                disable={(selectedStatus !== "KLAAR")}
             />
 
             <InputField

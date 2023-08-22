@@ -1,49 +1,85 @@
 import "./MalfunctionOverview.css"
-import DataTable from "react-data-table-component"
 import {useState, useEffect} from "react";
+import axios from "axios";
+import {Link, useParams} from "react-router-dom";
 
 function MalfunctionOverview() {
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(false);
-
-    const columns = [
-        {
-            name: "User ID",
-            selector: (row) => row.userId
-        },
-        {
-            name: "Title",
-            selector: (row) => row.title
-        },
-        {
-            name: "Completed",
-            selector: (row) => row.completed ? "Yes" : "No"
-        }
-    ]
+    const {id} = useParams()
+    const [malfunctions, setMalfunctions] = useState([{
+        solution: null,
+        description: null,
+        action: null,
+        urgency: null,
+        id: null,
+        createMalfunction: null,
+        updateMalfunction: null,
+        creator: null,
+        updatedBy: null,
+        status: null,
+        workstation: null,
+        title: null,
+    }])
 
     useEffect(() => {
-        fetchTableData()
-    }, [])
+        getMalfunctions()
+    },[])
 
-    async function fetchTableData() {
-        setLoading(true)
-        const URL = "https://jsonplaceholder.typicode.com/todos"
-        const response = await fetch(URL)
+    async function getMalfunctions() {
+        try{
+            const URL = `http://localhost:8080/malfunction`
+            const response = await axios.get(URL, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                }, responseType: "json"
+            })
+            console.log(response)
 
-        const users = await response.json();
-        setData(users);
-        setLoading(false)
+            let uniqueData = [...new Map(response.data.map((item) => [item["id"], item])).values()]
+            console.log(uniqueData)
+
+            const assignedData = uniqueData.filter((malfunction) => {
+                return malfunction.workStation
+            })
+
+            const malfunctionsAssignedToWorkstation = assignedData.filter((malfunction) => {
+                return malfunction.workStation.id == id
+            })
+
+            console.log(malfunctionsAssignedToWorkstation)
+
+
+            console.log(assignedData)
+            setMalfunctions(malfunctionsAssignedToWorkstation)
+            console.log(malfunctions)
+        } catch (e) {
+            console.error("failed", e)
+        }
     }
-
     return (
-        <DataTable
-            className={"rdt_TableCell rdt_TableHeader rdt_TableCol rdt_TableRow rdt_TableHeadRow rdt_Table"}
-            title={"Data"}
-            columns={columns}
-            data={data}
-            progressPending={loading}
-            pagination
-        />
+        <>
+
+            <div className={"table-container"}>
+                <table className={"operation-table"}>
+                    <thead>
+                    <tr>
+                        <th>Storingen</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {malfunctions.map((malfunction) => {
+                        return <tr>
+                            <td><Link to={`/malfunction/${malfunction.id}`}>{malfunction.title}</Link></td>
+                            <td>{malfunction.status}</td>
+                        </tr>
+                    })
+                    }
+                    </tbody>
+                </table>
+            </div>
+
+        </>
+
     )
 }
 

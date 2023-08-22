@@ -1,5 +1,5 @@
 
-function Textarea({id, name, placeholderText, register, validation, rows, cols}) {
+function Textarea({id, name, placeholderText, defaultValue, register, validation, rows, cols}) {
 
     return (
                 <textarea
@@ -8,6 +8,7 @@ function Textarea({id, name, placeholderText, register, validation, rows, cols})
                     placeholder={placeholderText}
                     rows={rows}
                     cols={cols}
+                    defaultValue={defaultValue}
                     {...register(name, validation)}
                 />
 
