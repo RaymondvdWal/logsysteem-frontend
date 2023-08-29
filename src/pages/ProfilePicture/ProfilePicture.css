@@ -12,16 +12,27 @@
 .upload-form {
     display: flex;
     justify-content: center;
-    gap: 50px;
+    gap: 20px;
 }
 
 .picture-container {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 80vh;
+    margin-top: 100px;
 }
 
 .show-picture img {
+    max-width: 40%;
     border: 1px solid #000000;
+}
+
+@media (max-width: 1600px) {
+    .upload-form input::file-selector-button {
+        font-size: 20px;
+    }
+
+    .upload-form button {
+        font-size: 20px;
+    }
 }

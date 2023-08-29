@@ -16,33 +16,36 @@ function Location() {
     return (
         <>
             <form className={"location-selector"}>
-                <h2>Welke Locatie?</h2>
+                <div className={"location-outer-container"}>
+                    <h2>Welke Locatie?</h2>
 
-                <div className={"button-container-location"}>
-                    <Button
-                        buttonType={"button"}
-                        buttonOnClick={setLocation}
-                        value={"Utrecht"}
-                    >
-                        Utrecht
-                    </Button>
+                    <div className={"button-container-location"}>
+                        <Button
+                            buttonType={"button"}
+                            buttonOnClick={setLocation}
+                            value={"Utrecht"}
+                        >
+                            Utrecht
+                        </Button>
 
-                    <Button
-                        buttonType={"button"}
-                        buttonOnClick={setLocation}
-                        value={"Nieuwegein"}
-                    >
-                        Nieuwegein
-                    </Button>
+                        <Button
+                            buttonType={"button"}
+                            buttonOnClick={setLocation}
+                            value={"Nieuwegein"}
+                        >
+                            Nieuwegein
+                        </Button>
 
-                    <Button
-                        buttonType={"button"}
-                        buttonOnClick={(setLocation)}
-                        value={"Woerden"}
-                    >
-                        Woerden
-                    </Button>
+                        <Button
+                            buttonType={"button"}
+                            buttonOnClick={(setLocation)}
+                            value={"Woerden"}
+                        >
+                            Woerden
+                        </Button>
+                    </div>
                 </div>
+
            </form>
         </>
     )

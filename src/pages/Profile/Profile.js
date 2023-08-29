@@ -1,6 +1,7 @@
 import "./Profile.css"
 import {AuthContext} from "../../context/AuthContext";
 import {useContext} from "react";
+import {Link} from "react-router-dom";
 
 function Profile() {
 
@@ -16,7 +17,7 @@ function Profile() {
         </div>
 
         <div className={"user-image"}>
-            <img src={user.profilePicture} alt={user.username}/>
+           <Link to={"/profile-picture"}><img src={user.profilePicture} alt={user.username}/></Link>
         </div>
     </section>
     )

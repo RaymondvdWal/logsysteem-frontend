@@ -9,10 +9,21 @@ h2 {
     line-height: normal;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
     h2 {
         font-size: 50px;
     }
+}
+
+@media (max-width: 900px) {
+    h2 {
+        font-size: 30px;
+    }
+}
+
+.location-outer-container {
+    max-width: 90%;
+    min-width: 600px;
 }
 
 .location-selector {
@@ -21,13 +32,18 @@ h2 {
     justify-content: center;
     align-items: center;
     height: 80vh;
-    gap: 50px;
 }
 
 .button-container-location {
     display: flex;
     justify-content: center;
     gap: 100px;
+}
+
+@media (max-width: 1600px) {
+    .button-container-location {
+        gap: 50px
+    }
 }
 
 .button-container-location button {
@@ -43,10 +59,18 @@ h2 {
     line-height: normal;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
     .button-container-location button {
         width: 200px;
         height: 200px;
         font-size: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .button-container-location button {
+        width: 100px;
+        height: 100px;
+        font-size: 15px;
     }
 }

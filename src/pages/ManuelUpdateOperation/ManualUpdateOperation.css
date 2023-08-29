@@ -3,9 +3,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 80vh;
-    gap: 50px;
+    justify-content: space-evenly;
+    height: 60vh;
+    margin-top: 100px;
 }
 
 .manual-update-operation input {
@@ -21,3 +21,42 @@
     flex-direction: column;
     gap: 5px;
 }
+
+@media (max-height: 800px) {
+    .manual-update-operation input{
+        font-size: 20px;
+    }
+
+    .manual-update-operation label{
+        font-size: 20px;
+    }
+
+    .manual-update-operation select{
+        font-size: 20px;
+        max-width: 250px;
+    }
+
+    .manual-update-operation button {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .manual-update-operation input{
+        font-size: 20px;
+    }
+
+    .manual-update-operation label{
+        font-size: 20px;
+    }
+
+    .manual-update-operation select{
+        font-size: 20px;
+        max-width: 250px;
+    }
+
+    .manual-update-operation button {
+        font-size: 20px;
+    }
+}
+

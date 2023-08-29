@@ -1,0 +1,10 @@
+@media (max-width: 900px) {
+     .new-malfunction-button {
+         padding: 10px 10px;
+     }
+
+    .malfunction-done-button {
+        padding: 10px 20px;
+    }
+
+}

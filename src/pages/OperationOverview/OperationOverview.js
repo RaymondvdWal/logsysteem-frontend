@@ -60,7 +60,7 @@ function OperationOverview() {
         <>
 
             <div className={"table-container"}>
-               <table className={"operation-table"}>
+               <table className={"table"}>
                    <thead>
                         <tr>
                             <th>Handelingen</th>

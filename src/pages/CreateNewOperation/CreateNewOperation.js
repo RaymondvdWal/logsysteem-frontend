@@ -6,6 +6,7 @@ import axios from "axios";
 import Button from "../../components/Button";
 import {useContext, useState} from "react";
 import {WorkstationContext} from "../../context/WorkstationContext";
+import Textarea from "../../components/Textarea";
 
 function CreateNewOperation() {
 
@@ -88,25 +89,27 @@ function CreateNewOperation() {
             errors={errors}
         />
 
-        <InputField
-            type={"text"}
-            name={"instruction"}
-            placeholderText={"Instructie"}
-            register={register}
-            errors={errors}
-            validation={{required: "Instructie is verplicht."}}
+        <Textarea
+        placeholderText={"Schrijf hier de instructie"}
+        register={register}
+        name={"instruction"}
+        errors={errors}
+        validation={{required: "Instructie is verplicht."}}
+        rows={5}
+        cols={50}
         />
 
-        <InputField
-            type={"text"}
-            name={"comment"}
-            placeholderText={"Commentaar"}
+        <Textarea
+            placeholderText={"Schrijf hier een opmerking"}
             register={register}
+            name={"comment"}
             errors={errors}
             validation={{maxLength: {
-                value: 250,
-                message: "Maximaal 250 tekens"
+                    value: 250,
+                    message: "Maximaal 250 tekens"
                 }}}
+            rows={5}
+            cols={50}
         />
 
         <Select

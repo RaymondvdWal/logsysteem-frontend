@@ -2,11 +2,10 @@
 .create-new-account-form {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
-    gap: 30px;
-    height: 80vh;
-    font-family: 'Jura', sans-serif;
+    margin-top: 5%;
+    gap: 30px
 }
 
 .create-new-account-form input, button {
@@ -36,5 +35,46 @@
     font-family: 'Jura', sans-serif;
     font-size: 30px;
     width: 340px;
+}
+
+@media (max-width: 900px) {
+    .create-new-account-form input {
+        font-size: 20px;
+    }
+
+    .create-new-account-form input::placeholder {
+        font-size: 20px;
+    }
+
+    .create-new-account-form select {
+        font-size: 20px;
+        max-width: 70%;
+    }
+
+    .create-new-account-form button {
+        font-size: 20px;
+    }
+}
+
+@media (max-height: 800px) {
+    .create-new-account-form {
+        gap: 10px;
+    }
+    .create-new-account-form input {
+        font-size: 20px;
+    }
+
+    .create-new-account-form input::placeholder {
+        font-size: 20px;
+    }
+
+    .create-new-account-form select {
+        font-size: 20px;
+        max-width: 70%;
+    }
+
+    .create-new-account-form button {
+        font-size: 20px;
+    }
 }
 

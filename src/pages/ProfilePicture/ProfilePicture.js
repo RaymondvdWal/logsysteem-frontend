@@ -111,7 +111,7 @@ function ProfilePicture() {
         {disable && <p>Kies een foto in jpeg, jpg of png formaat</p>}
 
         <div className={"show-picture"}>
-            {<img src={user.profilePicture} alt={user.username} height={500}/>}
+            {<img src={user.profilePicture} alt={user.username}/>}
         </div>
     </section>
     )

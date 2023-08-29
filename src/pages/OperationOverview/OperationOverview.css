@@ -2,34 +2,49 @@
 .table-container{
     display: flex;
     flex-direction: column;
-    gap: 5px;
     justify-content: center;
     align-items: center;
     height: 80vh;
 }
 
-.operation-table {
+.table {
     border-collapse: collapse;
     font-size: 30px;
-
+    max-width: 80%;
 }
 
-.operation-table thead {
+@media (max-width: 1600px) {
+    .table {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .table {
+        font-size: 15px;
+    }
+}
+
+.table thead {
     background-color: #E1F8FD;
 }
 
-.operation-table th {
+.table th {
     border: 3px solid #000000;
-    padding: 10px 100px;
+    padding: 5px 0;
+    width: 0.1%;
+    white-space: nowrap;
 }
 
-.operation-table tbody {
+.table tbody {
     background-color: #E1F8FD;
 }
 
-.operation-table td {
+.table td {
     border: 1px solid #000000;
-    padding: 10px 100px;
+    padding: 5px 0;
+    width: 0.1%;
+    white-space: nowrap;
 }
 
 

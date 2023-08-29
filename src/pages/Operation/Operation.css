@@ -1,12 +1,16 @@
 
 .table-container {
-    gap: 0;
-    height: 50vh;
+    height: 50vh
 }
 
 .first-table {
-    padding: 10px 500px;
-    height: 250px;
+    height: 50%;
+}
+
+@media (max-width: 1600px) {
+    .first-table {
+        height: 40%;
+    }
 }
 
 .first-table th {
@@ -19,26 +23,50 @@
     border-right: 3px solid #000000;
 }
 
-.operation-table {
-    width: 1500px;
-}
-
-.button-container-operation {
+.button-container {
     display: flex;
     justify-content: space-evenly;
 }
 
-.start-button {
+.green-button {
     padding: 10px 60px;
     background-color: #C7F2C0;
 }
 
-.change-button {
+.orange-button {
     padding: 10px 40px;
     background-color: #FBD7A1;
 }
 
-.stop-button {
+.red-button {
     padding: 10px 60px;
     background-color: #F9AAAA;
 }
+
+@media (max-width: 1600px) {
+    .green-button {
+        font-size: 20px;
+    }
+    .orange-button {
+        font-size: 20px;
+    }
+    .red-button {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .green-button {
+        font-size: 15px;
+        padding: 10px 40px;
+    }
+    .orange-button {
+        font-size: 15px;
+        padding: 10px 20px;
+    }
+    .red-button {
+        font-size: 15px;
+        padding: 10px 40px;
+    }
+}
+

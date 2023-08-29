@@ -8,7 +8,8 @@ body {
 .button-container-login button {
   background-color: #E1F8FD;
   display: inline-flex;
-  padding: 7px 86px;
+  width: 150px;
+  padding: 5px 10px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -19,7 +20,7 @@ body {
   font-weight: 400;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
   .login-form button{
     font-size: 20px;
   }
@@ -28,6 +29,7 @@ body {
 .button-container-login {
   display: flex;
   gap: 110px;
+  flex-shrink: 2;
 }
 
 .login-form {
@@ -35,7 +37,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 80vh;
+  margin-top: 20%;
   gap: 50px;
 }
 
@@ -49,7 +51,8 @@ body {
   border: 2px solid #000;
   background: #FFF;
   display: inline-flex;
-  padding: 7px 297px;
+  width: 780px;
+  padding: 7px 0;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -58,9 +61,10 @@ body {
   text-align: center;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
   .login-form input {
     font-size: 20px;
+    max-width: 80%;
   }
 }
 
@@ -72,8 +76,22 @@ body {
   font-weight: 400;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
   .login-form input::placeholder {
     font-size: 20px;
+  }
+}
+
+@media (max-width: 900px) {
+  .login-form button {
+    font-size: 15px;
+  }
+
+  .button-container-login {
+    gap: 60px;
+  }
+
+  .login-form input {
+    max-width: 60%;
   }
 }

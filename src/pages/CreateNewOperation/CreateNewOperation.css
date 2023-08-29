@@ -5,8 +5,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 80vh;
-    gap: 30px;
+    margin-top: 2%;
+    gap: 10px;
 }
 
 .create-new-operation-form input {
@@ -16,8 +16,66 @@
     background-color: #E1F8FD;
 }
 
+.create-new-operation-form textarea {
+    font-family: 'Jura', sans-serif;
+    resize: none;
+    background-color: #E1F8FD;
+    max-width: 99%;
+}
+
 .status-selection {
     display: flex;
     flex-direction: column;
     gap: 10px;
+}
+
+@media (max-height: 1000px) {
+
+    .create-new-operation-form {
+        gap: 5px;
+    }
+
+    .create-new-operation-form input {
+        font-size: 20px;
+    }
+
+    .create-new-operation-form select {
+        font-size: 20px;
+        max-width: 250px;
+    }
+
+    .create-new-operation-form button {
+        font-size: 20px;
+    }
+
+    .create-new-operation-form textarea {
+        max-width: 70%;
+    }
+
+    .create-new-operation-form label {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 900px) {
+    .create-new-operation-form {
+        gap: 10px;
+    }
+
+    .create-new-operation-form input {
+        font-size: 20px;
+    }
+
+    .create-new-operation-form select {
+        font-size: 20px;
+        max-width: 250px;
+    }
+
+    .create-new-operation-form button {
+        font-size: 20px;
+    }
+
+    .create-new-operation-form textarea {
+        max-width: 70%;
+    }
 }

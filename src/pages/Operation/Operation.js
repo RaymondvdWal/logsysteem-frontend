@@ -74,24 +74,24 @@ function Operation() {
 
 
     return(
-        <section className={"operation-section"}>
+        <section className={"table-section"}>
 
             <h2>{operation.name}</h2>
 
             <div className={"table-container"}>
-                <table className={"operation-table first-table"}>
-                    <thead className={"operation-inner-table"}>
+                <table className={"table first-table"}>
+                    <thead className={"inner-table"}>
                     <tr>
                         <th>Beschrijving</th>
                     </tr>
                     </thead>
-                    <tbody className={"operation-inner-table"}>
+                    <tbody className={"inner-table"}>
                     <tr>
                         <td>{operation.instruction}</td>
                     </tr>
                     </tbody>
                 </table>
-                <table className={"operation-table"}>
+                <table className={"table"}>
                     <thead>
                     <tr>
                         <th>Status:</th>
@@ -112,9 +112,9 @@ function Operation() {
                 </table>
             </div>
 
-            <div className={"button-container-operation"}>
+            <div className={"button-container"}>
                 <Button
-                    className={"start-button"}
+                    className={"green-button"}
                     buttonType={"onClick"}
                     value={"BEZIG"}
                     buttonOnClick={startStopOperation}
@@ -123,7 +123,7 @@ function Operation() {
                 </Button>
 
                 <Button
-                    className={"change-button"}
+                    className={"orange-button"}
                     buttonType={"onClick"}
                     buttonOnClick={() => {navigate(`/update-operation/${id}`)}}
                 >
@@ -131,7 +131,7 @@ function Operation() {
                 </Button>
 
                 <Button
-                    className={"stop-button"}
+                    className={"red-button"}
                     buttonType={"onClick"}
                     value={"KLAAR"}
                     buttonOnClick={startStopOperation}

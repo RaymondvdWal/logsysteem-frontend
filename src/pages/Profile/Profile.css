@@ -36,3 +36,9 @@
     font-size: 30px;
     line-height: 0;
 }
+
+@media (max-width: 1600px) {
+    .user-info p {
+        font-size: 20px;
+    }
+}

@@ -6,15 +6,13 @@
     justify-content: center;
     align-items: center;
     height: 80vh;
-    flex-wrap: wrap;
-    gap: 100px;
-    margin: 0 10%;
 }
 
 .workstation-tile {
     list-style: none;
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
     gap: 50px;
 }
 
@@ -32,10 +30,18 @@
     background-color: #E1F8FD;
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1600px) {
     .workstation-link {
         font-size: 30px;
         height: 200px;
         width: 200px;
+    }
+}
+
+@media (max-width: 900px) {
+    .workstation-link {
+        font-size: 15px;
+        height: 100px;
+        width: 100px;
     }
 }

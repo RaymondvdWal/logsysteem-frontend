@@ -75,20 +75,20 @@ function Malfunction() {
 
 
     return(
-        <section className={"operation-section"}>
+        <section className={"table-section"}>
 
             <h2>{malfunction.title}</h2>
 
             <div className={"table-container"}>
-                <table className={"operation-table first-table"}>
-                    <thead className={"operation-inner-table"}>
+                <table className={"table first-table"}>
+                    <thead className={"inner-table"}>
                     <tr>
                         <th>Beschrijving</th>
                         <th>Acties</th>
                         <th>Oplossing</th>
                     </tr>
                     </thead>
-                    <tbody className={"operation-inner-table"}>
+                    <tbody className={"inner-table"}>
                     <tr>
                         <td>{malfunction.description}</td>
                         <td>{malfunction.action}</td>
@@ -96,7 +96,7 @@ function Malfunction() {
                     </tr>
                     </tbody>
                 </table>
-                <table className={"operation-table"}>
+                <table className={"table"}>
                     <thead>
                     <tr>
                         <th>Status:</th>
@@ -115,9 +115,9 @@ function Malfunction() {
                 </table>
             </div>
 
-            <div className={"button-container-operation"}>
+            <div className={"button-container"}>
                 <Button
-                    className={"start-button"}
+                    className={"green-button new-malfunction-button"}
                     buttonType={"onClick"}
                     buttonOnClick={() => navigate("/new-malfunction")}
                 >
@@ -125,7 +125,7 @@ function Malfunction() {
                 </Button>
 
                 <Button
-                    className={"change-button"}
+                    className={"orange-button"}
                     buttonType={"onClick"}
                     buttonOnClick={() => {navigate(`/update-malfunction/${id}`)}}
                 >
@@ -133,7 +133,7 @@ function Malfunction() {
                 </Button>
 
                 <Button
-                    className={"stop-button"}
+                    className={"red-button malfunction-done-button"}
                     buttonType={"onClick"}
                     value={"KLAAR"}
                     buttonOnClick={finishMalfunction}
