@@ -3,13 +3,14 @@ import axios from "axios";
 import InputField from "../../components/InputField";
 import {useForm} from "react-hook-form";
 import Button from "../../components/Button";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
 
 function ProfilePicture() {
 
-    const {register,handleSubmit} = useForm();
+    const {register,handleSubmit, formState: {errors}, watch} = useForm();
     const {auth, toggleAuth, auth:{user}} = useContext(AuthContext)
+    const [disable, setDisable] = useState(true)
 
     async function assignPictureToUser(response, data) {
         try {
@@ -24,6 +25,7 @@ function ProfilePicture() {
             const img = URL.createObjectURL(data.data)
             toggleAuth({
                 ...auth,
+                isAuth: true,
                 ...user,
                 user: {
                     username: user.username,
@@ -77,21 +79,36 @@ function ProfilePicture() {
         }
     }
 
+    function formatChecker() {
+        const format = watch("pic")
+        console.log(format[0].type)
+        if (format[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
+            setDisable(false)
+        } else {
+            setDisable(true)
+        }
+    }
+
     return(
     <section className={"picture-container"}>
-        <form onSubmit={handleSubmit(chooseProfilePicture)} className={"upload-form"}>
+        <form onSubmit={handleSubmit(chooseProfilePicture)} className={"upload-form"} onChange={formatChecker}>
             <InputField
                 type={"file"}
                 register={register}
                 name={"pic"}
+                errors={errors}
+                validation={{required: "Selecteer een foto."}}
             />
 
             <Button
                 buttonType={"submit"}
+                disabled={disable}
             >
                 Uploaden
             </Button>
         </form>
+
+        {disable && <p>Kies een foto in jpeg, jpg of png formaat</p>}
 
         <div className={"show-picture"}>
             {<img src={user.profilePicture} alt={user.username} height={500}/>}

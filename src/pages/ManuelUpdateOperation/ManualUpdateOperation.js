@@ -10,7 +10,7 @@ import {OperationContext} from "../../context/OperationContext";
 import {AuthContext} from "../../context/AuthContext";
 
 function ManualUpdateOperation() {
-    const {register, handleSubmit, watch} = useForm()
+    const {register, handleSubmit, watch, formState: {errors}} = useForm()
     const {id} = useParams()
     const {operation, setOperation} = useContext(OperationContext)
     const {auth: {user}} = useContext(AuthContext)
@@ -60,7 +60,9 @@ function ManualUpdateOperation() {
                     <option value={"ONGEDAAN"}>Ongedaan</option>
                     <option value={"BEZIG"}>Bezig</option>
                     <option value={"KLAAR"}>Klaar</option>
-                </>}
+                </>
+            }
+            errors={errors}
             />
 
             <InputField
@@ -69,6 +71,7 @@ function ManualUpdateOperation() {
                 type={"datetime-local"}
                 children={"starttijd:"}
                 disable={selectedStatus === "ONGEDAAN"}
+                errors={errors}
             />
 
             <InputField
@@ -77,6 +80,7 @@ function ManualUpdateOperation() {
                 type={"datetime-local"}
                 children={"eindtijd:"}
                 disable={(selectedStatus !== "KLAAR")}
+                errors={errors}
             />
 
             <InputField
@@ -85,6 +89,7 @@ function ManualUpdateOperation() {
                 type={"text"}
                 value={user.username}
                 editable={false}
+                errors={errors}
             />
 
             <Button

@@ -13,9 +13,6 @@ function Location() {
         navigate("/choose-workstation")
     }
 
-
-
-
     return (
         <>
             <form className={"location-selector"}>

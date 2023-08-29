@@ -19,6 +19,12 @@ body {
   font-weight: 400;
 }
 
+@media (max-width: 1500px) {
+  .login-form button{
+    font-size: 20px;
+  }
+}
+
 .button-container-login {
   display: flex;
   gap: 110px;
@@ -31,6 +37,12 @@ body {
   align-items: center;
   height: 80vh;
   gap: 50px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .login-form input {
@@ -46,10 +58,22 @@ body {
   text-align: center;
 }
 
+@media (max-width: 1500px) {
+  .login-form input {
+    font-size: 20px;
+  }
+}
+
 .login-form input::placeholder {
   text-align: center;
   font-family: Jura, sans-serif;
   font-size: 30px;
   font-style: normal;
   font-weight: 400;
+}
+
+@media (max-width: 1500px) {
+  .login-form input::placeholder {
+    font-size: 20px;
+  }
 }

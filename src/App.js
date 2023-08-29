@@ -1,5 +1,5 @@
 import './App.css';
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import Login from "./pages/Login/Login";
 import Location from "./pages/Location/Location";
 import WorkstationSelection from "./pages/WorkstationSelection/WorkstationSelection";
@@ -18,28 +18,34 @@ import ManualUpdateOperation from "./pages/ManuelUpdateOperation/ManualUpdateOpe
 import CreateNewMalfunction from "./pages/CreateNewMalfunction/CreateNewMalfunction";
 import Malfunction from "./pages/Malfunction/Malfunction";
 import UpdateMalfunction from "./pages/UpdateMalfunction/UpdateMalfunction";
+import {useContext} from "react";
+import {AuthContext} from "./context/AuthContext";
+import {AuthorityContext} from "./context/AuthorityContext";
 
 function App() {
+      const {auth:{isAuth}} = useContext(AuthContext)
+      const {authority} = useContext(AuthorityContext)
+
   return (
     <>
-        <Navigation/>
+      {isAuth && <Navigation/>}
         <div className="App">
           <Routes>
             <Route path={"/"} element={<Login/>}/>
-            <Route path={"/location"} element={<Location/>}/>
+            <Route path={"/location"} element={authority !== "ADMIN" ? <Location/> : <Navigate to={"/"}/>}/>
             <Route path={"/create"} element={<CreateNew/>}/>
-            <Route path={"/choose-workstation"} element={<WorkstationSelection/>}/>
-            <Route path={"new-workstation"} element={<CreateNewWorkstation/>}/>
-            <Route path={"/choose-workstation/:id"} element={<WorkstationOverview/>}/>
-            <Route path={"/operation-overview/:id"} element={<OperationOverview/>}/>
-            <Route path={"/operation/:id"} element={<Operation/>}/>
-            <Route path={"/new-operation"} element={<CreateNewOperation/>}/>
-            <Route path={"/update-operation/:id"} element={<ManualUpdateOperation/>}/>
-            <Route path={"/malfunction-overview/:id"} element={<MalfunctionOverview/>}/>
-            <Route path={"/malfunction/:id"} element={<Malfunction/>}/>
-            <Route path={"/update-malfunction/:id"} element={<UpdateMalfunction/>}/>
-            <Route path={"/new-malfunction"} element={<CreateNewMalfunction/>}/>
-            <Route path={"/create-new-account"} element={<CreateNewAccount/>}/>
+            <Route path={"/choose-workstation"} element={authority !== "ADMIN" ? <WorkstationSelection/> : <Navigate to={"/"}/>}/>
+            <Route path={"new-workstation"} element={authority === "MODERATOR" ? <CreateNewWorkstation/> : <Navigate to={"/"}/>}/>
+            <Route path={"/choose-workstation/:id"} element={authority !== "ADMIN" ? <WorkstationOverview/> : <Navigate to={"/"}/>}/>
+            <Route path={"/operation-overview/:id"} element={authority !== "ADMIN" ? <OperationOverview/> : <Navigate to={"/"}/>}/>
+            <Route path={"/operation/:id"} element={authority !== "ADMIN" ? <Operation/> : <Navigate to={"/"}/>}/>
+            <Route path={"/new-operation"} element={authority === "MODERATOR" ? <CreateNewOperation/> : <Navigate to={"/"}/>}/>
+            <Route path={"/update-operation/:id"} element={authority !== "ADMIN" ? <ManualUpdateOperation/> : <Navigate to={"/"}/>}/>
+            <Route path={"/malfunction-overview/:id"} element={authority !== "ADMIN" ? <MalfunctionOverview/> : <Navigate to={"/"}/>}/>
+            <Route path={"/malfunction/:id"} element={ authority !== "ADMIN" ? <Malfunction/> : <Navigate to={"/"}/>}/>
+            <Route path={"/update-malfunction/:id"} element={ authority !== "ADMIN" ? <UpdateMalfunction/> : <Navigate to={"/"}/>}/>
+            <Route path={"/new-malfunction"} element={authority !== "ADMIN" ? <CreateNewMalfunction/> : <Navigate to={"/"}/>}/>
+            <Route path={"/create-new-account"} element={authority === "ADMIN" ? <CreateNewAccount/> : <Navigate to={"/"}/>}/>
             <Route path={"/profile"} element={<Profile/>}/>
             <Route path={"/profile-picture"} element={<ProfilePicture/>}/>
           </Routes>

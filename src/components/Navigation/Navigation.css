@@ -7,6 +7,12 @@ nav {
     background: #E1F8FD;
 }
 
+@media (max-width: 1500px) {
+    nav {
+        height: 50px;
+    }
+}
+
 nav button {
     height: 80px;
     background-color: #E1F8FD;
@@ -17,10 +23,24 @@ nav button {
     font-size: 30px;
     font-style: normal;
     font-weight: 400;
-    line-height: normal;}
+    line-height: normal;
+}
 
-.default-img {
-    height: 77px;
+@media (max-width: 1500px) {
+    nav button {
+        font-size: 20px;
+        height: 50px;
+    }
+}
+
+.profile-picture {
+    height: 70px;
+}
+
+@media (max-width: 1500px) {
+    .profile-picture {
+        height: 40px;
+    }
 }
 
 .right-button-container {
@@ -29,6 +49,11 @@ nav button {
 
 .create-button {
     border-left: 1px solid #000;
+    border-right: none;
+}
+
+.logout-button {
+    border-left: 1px solid #000000;
 }
 
 .profile-button {

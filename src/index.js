@@ -5,26 +5,29 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import AuthContextProvider from "./context/AuthContext";
-import LocationContextProvider, {LocationContext} from "./context/LocationContext";
+import LocationContextProvider from "./context/LocationContext";
 import WorkstationContextProvider from "./context/WorkstationContext";
 import OperationContextProvider from "./context/OperationContext";
 import MalfunctionContextProvider from "./context/MalfunctionContext";
+import AuthorityContextProvider from "./context/AuthorityContext";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Router>
-        <AuthContextProvider>
-            <WorkstationContextProvider>
-                <LocationContextProvider>
-                    <OperationContextProvider>
-                        <MalfunctionContextProvider>
-                            <App />
-                        </MalfunctionContextProvider>
-                    </OperationContextProvider>
-                </LocationContextProvider>
-            </WorkstationContextProvider>
-        </AuthContextProvider>
+        <AuthorityContextProvider>
+            <AuthContextProvider>
+                <WorkstationContextProvider>
+                    <LocationContextProvider>
+                        <OperationContextProvider>
+                            <MalfunctionContextProvider>
+                                <App />
+                            </MalfunctionContextProvider>
+                        </OperationContextProvider>
+                    </LocationContextProvider>
+                </WorkstationContextProvider>
+            </AuthContextProvider>
+        </AuthorityContextProvider>
     </Router>
   </React.StrictMode>
 );

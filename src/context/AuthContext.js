@@ -4,7 +4,7 @@ import jwt_decode from "jwt-decode";
 import {useNavigate} from "react-router-dom";
 import {checkTokenValidity} from "../pages/helper/checkTokenValidity";
 import defaultProfilePicture from "../assets/Tijdelijke profielfoto.jpg"
-import {LocationContext} from "./LocationContext";
+import {AuthorityContext} from "./AuthorityContext";
 
 
 export const AuthContext = createContext(null);
@@ -17,6 +17,7 @@ function AuthContextProvider({children}) {
         status: "pending",
     })
     const navigate = useNavigate();
+    const {setAuthority} = useContext(AuthorityContext)
     
     useEffect(() => {
         const storedToken = localStorage.getItem("token");
@@ -31,6 +32,24 @@ function AuthContextProvider({children}) {
             })
         }
     },[]);
+
+
+    async function getAuthority() {
+        try{
+            const GET_URL = "http://localhost:8080/authenticated"
+            const response = await axios.get(GET_URL, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+            console.log(response)
+            console.log(response.data.authorities[0].authority)
+            setAuthority(response.data.authorities[0].authority)
+            localStorage.setItem("authority", response.data.authorities[0].authority)
+        } catch (e) {
+            console.error("failed", e)
+        }
+    }
 
     async function getLoadProfilePicture(username, email, firstname, lastname, password, profilePicture, workStation) {
         try {
@@ -73,6 +92,7 @@ function AuthContextProvider({children}) {
                         Authorization: `Bearer ${jwt}`
             }})
             console.log(profilePicture)
+            await getAuthority()
            toggleAuth( {
                ...auth,
                isAuth: true,
@@ -106,7 +126,11 @@ function AuthContextProvider({children}) {
                 await getLoadProfilePicture(username, email, firstname, lastname, password, profilePicture, workStation)
             }
             if (redirect) {
-                navigate("/location")
+                if (localStorage.getItem("authority") === "ADMIN"){
+                    navigate("/create")
+                } else {
+                    navigate("/location")
+                }
             }
         } catch (error) {
             return alert("failure")

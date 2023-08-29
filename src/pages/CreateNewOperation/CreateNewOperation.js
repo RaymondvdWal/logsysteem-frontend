@@ -4,13 +4,14 @@ import {useForm} from "react-hook-form";
 import Select from "../../components/Select";
 import axios from "axios";
 import Button from "../../components/Button";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {WorkstationContext} from "../../context/WorkstationContext";
 
 function CreateNewOperation() {
 
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, formState: {errors}, watch} = useForm()
     const {workstations, setWorkstation} = useContext(WorkstationContext)
+    const [disable, setDisalbe] = useState(true)
     async function assignOperationToWorkstation(response, data) {
         try{
             const ASSIGN_URL = `http://localhost:8080/operation/${response.data.id}/workstation/${data.workstation}`
@@ -57,22 +58,34 @@ function CreateNewOperation() {
         } catch (e) {
             console.error("failed", e)
         }
+    }
+
+    function formChecker() {
+        const validateAuthority = watch("workstation")
+        console.log(validateAuthority)
+        if (validateAuthority !== "Selecteer een werkplek") {
+            setDisalbe(false)
+        } else {
+            setDisalbe(true)
+        }
 
     }
 
     return(
     <>
-        <form className={"create-new-operation-form"} onSubmit={handleSubmit(createOperation)}>
+        <form className={"create-new-operation-form"} onSubmit={handleSubmit(createOperation)} onChange={formChecker}>
         <InputField
             type={"date"}
             name={"dateIndication"}
             register={register}
+            errors={errors}
         />
 
         <InputField
             type={"time"}
             name={"timeIndication"}
             register={register}
+            errors={errors}
         />
 
         <InputField
@@ -80,6 +93,8 @@ function CreateNewOperation() {
             name={"instruction"}
             placeholderText={"Instructie"}
             register={register}
+            errors={errors}
+            validation={{required: "Instructie is verplicht."}}
         />
 
         <InputField
@@ -87,6 +102,11 @@ function CreateNewOperation() {
             name={"comment"}
             placeholderText={"Commentaar"}
             register={register}
+            errors={errors}
+            validation={{maxLength: {
+                value: 250,
+                message: "Maximaal 250 tekens"
+                }}}
         />
 
         <Select
@@ -99,12 +119,8 @@ function CreateNewOperation() {
                 <option value={"BEZIG"}>Bezig</option>
                 <option value={"KLAAR"}>Klaar</option>
             </>}
-            value1={"ONGEDAAN"}
-            option1={"Ongedaan"}
-            value2={"BEZIG"}
-            option2={"Bezig"}
-            value3={"KLAAR"}
-            option3={"Klaar"}
+            errors={errors}
+            validation={{required: "Status is verplicht."}}
         >
             Initiële status
         </Select>
@@ -114,6 +130,11 @@ function CreateNewOperation() {
             name={"name"}
             placeholderText={"Titel"}
             register={register}
+            errors={errors}
+            validation={{required: "Een titel is verplicht.", maxLength: {
+                value: 25,
+                message: "Maximaal 25 tekens"
+                }}}
         />
 
         <InputField
@@ -121,19 +142,32 @@ function CreateNewOperation() {
             name={"device"}
             placeholderText={"Apparaat"}
             register={register}
+            errors={errors}
+            validation={{required: "Een apparaat is verplicht", maxLength: {
+                value: 25,
+                message: "Maximaal 25 tekens"
+                }}}
         />
 
         <Select
             className={"workstation-selection"}
             register={register}
             name={"workstation"}
-            option={workstations.map((workstation) => {
-                return <option value={workstation.id}>{workstation.name}</option>
-            })}
+            option={
+            <>
+                <option>Selecteer een werkplek</option>
+                {workstations.map((workstation) => {
+                    return <option value={workstation.id}>{workstation.name}</option>
+                })}
+            </>
+            }
+
+            errors={errors}
         />
 
         <Button
             buttonType={"submit"}
+            disabled={disable}
         >
             Versturen
         </Button>

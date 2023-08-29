@@ -10,7 +10,6 @@ function InputField({id, type, register, name, defaultValue, disable, validation
                 <input
                     type={type}
                     id={id}
-                    name={name}
                     value={value}
                     placeholder={placeholderText}
                     onChange={onChange}
@@ -19,10 +18,8 @@ function InputField({id, type, register, name, defaultValue, disable, validation
                     defaultValue={defaultValue}
                     {...register(name, validation)}
                 />
+                <p>{errors[name]?.message}</p>
             </label>
-
-            {/*{errors[name] && <p>{errors[name].message}</p>}*/}
-
         </>
     );
 }

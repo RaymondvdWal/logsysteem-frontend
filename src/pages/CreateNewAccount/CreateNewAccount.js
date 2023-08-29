@@ -7,13 +7,15 @@ import axios, {options} from "axios";
 import {getValue} from "@testing-library/user-event/dist/utils";
 import {useNavigate} from "react-router-dom";
 import login from "../Login/Login";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import {AuthContext} from "../../context/AuthContext";
 
 function CreateNewAccount() {
-    const {register, formState: {errors}, handleSubmit,control} = useForm();
+    const {register, formState: {errors}, handleSubmit,watch} = useForm();
     const navigate = useNavigate();
     const {login, auth} = useContext(AuthContext)
+    const [disable, setDisable] = useState(true)
+
     async function submit(data, e) {
         console.log(data)
         try{
@@ -47,15 +49,26 @@ function CreateNewAccount() {
         }
     }
 
+    function formChecker() {
+        const checkAuthoruty = watch("authority")
+        if (checkAuthoruty !== "Selecteer een rol") {
+            setDisable(false)
+        } else {
+            setDisable(true)
+        }
+    }
+
 
     return (
-        <form className={"create-new-account-form"} onSubmit={handleSubmit(submit)}>
+        <form className={"create-new-account-form"} onSubmit={handleSubmit(submit)} onChange={formChecker}>
             <InputField
             id={"username-field"}
             register={register}
             type={"text"}
             name={"username"}
             placeholderText={"Gebruikersnaam"}
+            errors={errors}
+            validation={{required: "Gebruikersnaam is verplicht"}}
             />
 
             <InputField
@@ -64,6 +77,11 @@ function CreateNewAccount() {
             type={"password"}
             name={"password"}
             placeholderText={"Wachtwoord"}
+            errors={errors}
+            validation={{required: "Wachtwoord is verplicht", minLength: {
+                value: 10,
+                message: "Minimaal 10 tekens"
+                }}}
             />
 
             <InputField
@@ -72,6 +90,11 @@ function CreateNewAccount() {
             type={"text"}
             name={"firstname"}
             placeholderText={"Voornaam"}
+            errors={errors}
+            validation={{required: "Voornaam is verplicht", maxLength: {
+                    value: 20,
+                    message: "Maximaal 20 tekens"
+                }}}
             />
 
             <InputField
@@ -80,6 +103,11 @@ function CreateNewAccount() {
             type={"text"}
             name={"lastname"}
             placeholderText={"Achternaam"}
+            errors={errors}
+            validation={{required: "Achternaam is verplicht", maxLength: {
+                    value: 25,
+                    message: "Maximaal 25 tekens"
+                }}}
             />
 
             <InputField
@@ -88,24 +116,28 @@ function CreateNewAccount() {
             type={"email"}
             name={"email"}
             placeholderText={"Email"}
+            errors={errors}
+            validation={{required: "Email is verplicht"}}
             />
 
             <Select
                 className={"authority-selector"}
-                children={"Rol: "}
                 register={register}
                 name="authority"
                 option={
                         <>
+                         <option> Selecteer een rol</option>
                          <option value={"user"}>Medewerker</option>
                          <option value={"moderator"}>Specialist</option>
                          <option value={"admin"}>Admin</option>
                         </>
                 }
+                errors={errors}
             />
 
             <Button
                 buttonType={"submit"}
+                disabled={disable}
             >
                 Verzenden
             </Button>

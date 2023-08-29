@@ -9,16 +9,24 @@
 }
 
 .workstation-menu button {
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     justify-content: center;
     align-items: center;
     border: 1px solid #000;
     background: #E1F8FD;
     font-family: Jura, sans-serif;
-    font-size: 55px;
+    font-size: 40px;
     font-style: normal;
     font-weight: 400;
+}
+
+@media (max-width: 1500px) {
+    .workstation-menu button {
+        width: 200px;
+        height: 200px;
+        font-size: 30px;
+    }
 }
 
 .workstation-menu section {
@@ -26,7 +34,14 @@
     font-size: 20px;
     border: 1px solid #000000;
     background-color: #E1F8FD;
-    padding: 25px 415px;
+    padding: 25px 270px;
+}
+
+@media (max-width: 1500px) {
+    .workstation-menu section {
+        padding: 20px 185px;
+        font-size: 15px;
+    }
 }
 
 .button-container-workstation-overview {

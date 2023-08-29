@@ -2,11 +2,11 @@ import './Login.css'
 import InputField from "../../components/InputField";
 import {useForm} from "react-hook-form";
 import Button from "../../components/Button";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 function Login() {
-    const {login, auth} = useContext(AuthContext);
+    const {login} = useContext(AuthContext);
     const {register, formState: {errors}, handleSubmit} = useForm();
 
     async function submit(data, e) {
@@ -31,38 +31,45 @@ function Login() {
 
     return (
         <>
-            <form className={"login-form"} onSubmit={handleSubmit(submit)}>
-                <InputField
-                    id={"usernameField"}
-                    register={register}
-                    name={"username"}
-                    // validation={{required: true, message: 'Please enter your username'}}
-                    type={"text"}
-                    placeholderText={"Username"}
-                />
+            <div className={"login-container"}>
+                <form className={"login-form"} onSubmit={handleSubmit(submit)}>
+                    <InputField
+                        id={"usernameField"}
+                        register={register}
+                        name={"username"}
+                        type={"text"}
+                        placeholderText={"Username"}
+                        errors={errors}
+                        validation={{required: "Username is verplicht"}}
+                    />
 
-                <InputField
-                    id={"passwordField"}
-                    register={register}
-                    name={"password"}
-                    type={"password"}
-                    placeholderText={"Wachtwoord"}
-                />
+                    <InputField
+                        id={"passwordField"}
+                        register={register}
+                        name={"password"}
+                        type={"password"}
+                        placeholderText={"Wachtwoord"}
+                        errors={errors}
+                        validation={{required: "Wachtwoord is verplicht"}}
+                    />
 
-                <div className={"button-container-login"}>
-                    <Button
-                        buttonType={"submit"}
-                    >
-                        Inloggen
-                    </Button>
+                    <div className={"button-container-login"}>
+                        <Button
+                            buttonType={"submit"}
+                        >
+                            Inloggen
+                        </Button>
 
-                    <Button
-                        buttonType={"onclick"}
-                    >
-                        Vergeten
-                    </Button>
-                </div>
-            </form>
+                        <Button
+                            buttonType={"onclick"}
+                            disabled={true}
+                        >
+                            Vergeten
+                        </Button>
+                    </div>
+                </form>
+            </div>
+
         </>
     )
 }

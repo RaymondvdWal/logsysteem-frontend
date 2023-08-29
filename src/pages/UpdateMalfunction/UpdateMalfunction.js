@@ -11,7 +11,7 @@ import {MalfunctionContext} from "../../context/MalfunctionContext";
 
 function UpdateMalfunction() {
     const {id} = useParams()
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, formState: {errors}} = useForm()
     const {malfunction, setMalfunction} = useContext(MalfunctionContext)
     const navigate = useNavigate()
 
@@ -46,6 +46,7 @@ function UpdateMalfunction() {
                 type={"text"}
                 placeholderText={"Titel"}
                 defaultValue={malfunction.title}
+                errors={errors}
             />
 
             <Textarea
@@ -55,6 +56,7 @@ function UpdateMalfunction() {
                 rows={10}
                 cols={70}
                 defaultValue={malfunction.description}
+                errors={errors}
             />
 
             <Textarea
@@ -64,6 +66,7 @@ function UpdateMalfunction() {
                 rows={5}
                 cols={70}
                 defaultValue={malfunction.action}
+                errors={errors}
             />
 
             <Textarea
@@ -73,6 +76,7 @@ function UpdateMalfunction() {
                 rows={5}
                 cols={70}
                 defaultValue={malfunction.solution}
+                errors={errors}
             />
 
             <Select
@@ -86,7 +90,9 @@ function UpdateMalfunction() {
                         <option value={"ONGEDAAN"}>Ongedaan</option>
                         <option value={"BEZIG"}>Bezig</option>
                         <option value={"KLAAR"}>Klaar</option>
-                    </>}
+                    </>
+                }
+                errors={errors}
             />
 
             <Select
@@ -100,7 +106,9 @@ function UpdateMalfunction() {
                         <option value={"LAAG"}>Laag</option>
                         <option value={"MIDDEL"}>Middel</option>
                         <option value={"HOOG"}>Hoog</option>
-                    </>}
+                    </>
+                }
+                errors={errors}
             />
 
             <Button

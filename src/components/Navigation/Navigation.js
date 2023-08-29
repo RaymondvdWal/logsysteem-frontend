@@ -4,17 +4,26 @@ import defaultProfilePicture from "../../assets/Tijdelijke profielfoto.jpg"
 import {useNavigate} from "react-router-dom";
 import {useContext} from "react";
 import {AuthContext} from "../../context/AuthContext";
-import {LocationContext} from "../../context/LocationContext";
-import {WorkstationContext} from "../../context/WorkstationContext";
+import {AuthorityContext} from "../../context/AuthorityContext";
 
 function Navigation() {
         const navigate = useNavigate();
         const {logout, auth: {user, isAuth}} = useContext(AuthContext);
-        const {location} = useContext(LocationContext)
-        const {workstations} = useContext(WorkstationContext)
+        const {authority} = useContext(AuthorityContext)
+
+    function buttonCheck() {
+            if (localStorage.getItem("location") !== null) {
+                return true
+            }
+            if (localStorage.getItem("authority") === "ADMIN") {
+                return true
+            }
+    }
 
     return (
         <nav>
+
+            { authority !== "ADMIN" &&
             <div className={"left-button-container"}>
                 <Button
                     buttonType={"button"}
@@ -22,32 +31,41 @@ function Navigation() {
                 >
                     Locatie
                 </Button>
-
+                {
+                    localStorage.getItem("location") &&
                 <Button
                     buttonType={"button"}
                     buttonOnClick={() => navigate("choose-workstation")}
                 >
                     Werkplek
                 </Button>
-
+                }
+                { localStorage.getItem("workstationId") &&
                 <Button
                     buttonType={"button"}
                     buttonOnClick={() => navigate(`operation-overview/${localStorage.getItem("workstationId")}`)}
                 >
                     Handelingen
                 </Button>
-
+                }
+                { localStorage.getItem("workstationId") &&
                 <Button
                     buttonType={"button"}
                     buttonOnClick={() => navigate(`malfunction-overview/${localStorage.getItem("workstationId")}`)}
                 >
                     Storingen
                 </Button>
-            </div>
+                }
+            </div>}
 
-            {isAuth && <p>{location.location}</p>}
 
-            <div className={"right-button-container"}>
+            {isAuth && <p>{localStorage.getItem("location")}</p>}
+
+        { isAuth &&
+
+        <div className={"right-button-container"}>
+            {    buttonCheck()
+                 &&
                 <Button
                     className={"create-button"}
                     buttonType={"button"}
@@ -55,31 +73,34 @@ function Navigation() {
                 >
                     Aanmaken
                 </Button>
-
-                <Button
-                    buttonType={"button"}
-                    buttonOnClick={logout}
-                >
-                    Uitloggen
-                </Button>
-
-                <Button
-                    className={"profile-button"}
-                    buttonType={"button"}
-                    buttonOnClick={() => navigate("profile")}
-                >
-                    Profiel
-                </Button>
-
-                <Button
-                    buttonType={"button"}
-                    buttonOnClick={() => navigate("profile-picture")}
-                >
-                    {isAuth? <img src={user.profilePicture} alt={user.username} height={70}/> : <img src={defaultProfilePicture} alt={"vervangende foto"} height={70}/>}
-                </Button>
+            }
 
 
-            </div>
+            <Button
+                buttonType={"button"}
+                buttonOnClick={logout}
+                className={"logout-button"}
+            >
+                Uitloggen
+            </Button>
+
+            <Button
+                className={"profile-button"}
+                buttonType={"button"}
+                buttonOnClick={() => navigate("profile")}
+            >
+                Profiel
+            </Button>
+
+            <Button
+                buttonType={"button"}
+                buttonOnClick={() => navigate("profile-picture")}
+            >
+                {isAuth? <img className={"profile-picture"} src={user.profilePicture} alt={user.username}/> : <img src={defaultProfilePicture} alt={"vervangende foto"}/>}
+            </Button>
+        </div>
+        }
+
         </nav>
     )
 }
