@@ -19,11 +19,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    margin-top: 100px;
+    margin-top: 5%;
+    gap: 5px;
 }
 
 .show-picture img {
-    max-width: 40%;
+    max-width: 20%;
     border: 1px solid #000000;
 }
 

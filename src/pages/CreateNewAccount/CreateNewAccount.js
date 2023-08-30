@@ -41,7 +41,7 @@ function CreateNewAccount() {
             e.target[2].value="";
             e.target[3].value="";
             e.target[4].value="";
-            e.target[5].value="";
+            e.target[5].value="Selecteer een rol";
         }catch (error) {
             console.error("er is iets mis gegaan", error)
             console.log(data)

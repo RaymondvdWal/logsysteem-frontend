@@ -160,7 +160,7 @@ function CreateNewOperation() {
             <>
                 <option>Selecteer een werkplek</option>
                 {workstations.map((workstation) => {
-                    return <option value={workstation.id}>{workstation.name}</option>
+                    return <option value={workstation.id}>{workstation.name}({workstation.location.toLowerCase()})</option>
                 })}
             </>
             }
