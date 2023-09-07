@@ -24,6 +24,7 @@ function AuthContextProvider({children}) {
         if (storedToken && checkTokenValidity(storedToken)) {
             void login(storedToken)
         } else {
+            localStorage.clear()
             toggleAuth({
                 ...auth,
                 isAuth: false,

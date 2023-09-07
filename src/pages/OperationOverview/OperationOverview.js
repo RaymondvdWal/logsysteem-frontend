@@ -1,7 +1,6 @@
 import "./OperationOverview.css"
-import {useState, useEffect, useContext} from "react";
+import {useState, useEffect} from "react";
 import axios from "axios";
-import {LocationContext} from "../../context/LocationContext";
 import {Link, useParams} from "react-router-dom";
 
 function OperationOverview() {

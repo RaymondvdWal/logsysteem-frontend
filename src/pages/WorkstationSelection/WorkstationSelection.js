@@ -6,7 +6,7 @@ import {LocationContext} from "../../context/LocationContext";
 import {WorkstationContext} from "../../context/WorkstationContext";
 
 function WorkstationSelection() {
-    const {location:{location}, setLocation} = useContext(LocationContext)
+    const {location:{location}} = useContext(LocationContext)
     const {workstations, setWorkstation} = useContext(WorkstationContext)
     const [myWorkstations, setMyWorkstation] = useState([{
         id: null,

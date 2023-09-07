@@ -11,8 +11,8 @@ import Textarea from "../../components/Textarea";
 function CreateNewOperation() {
 
     const {register, handleSubmit, formState: {errors}, watch} = useForm()
-    const {workstations, setWorkstation} = useContext(WorkstationContext)
-    const [disable, setDisalbe] = useState(true)
+    const {workstations} = useContext(WorkstationContext)
+    const [disable, setDisable] = useState(true)
     async function assignOperationToWorkstation(response, data) {
         try{
             const ASSIGN_URL = `http://localhost:8080/operation/${response.data.id}/workstation/${data.workstation}`
@@ -65,9 +65,9 @@ function CreateNewOperation() {
         const validateAuthority = watch("workstation")
         console.log(validateAuthority)
         if (validateAuthority !== "Selecteer een werkplek") {
-            setDisalbe(false)
+            setDisable(false)
         } else {
-            setDisalbe(true)
+            setDisable(true)
         }
 
     }

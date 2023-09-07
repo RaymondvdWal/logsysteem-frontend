@@ -12,7 +12,7 @@ import {MalfunctionContext} from "../../context/MalfunctionContext";
 function UpdateMalfunction() {
     const {id} = useParams()
     const {register, handleSubmit, formState: {errors}} = useForm()
-    const {malfunction, setMalfunction} = useContext(MalfunctionContext)
+    const {malfunction} = useContext(MalfunctionContext)
     const navigate = useNavigate()
 
     async function updateMalfunction(data) {

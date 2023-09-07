@@ -3,17 +3,11 @@ import InputField from "../../components/InputField";
 import Button from "../../components/Button";
 import Select from "../../components/Select";
 import {useForm} from "react-hook-form";
-import axios, {options} from "axios";
-import {getValue} from "@testing-library/user-event/dist/utils";
-import {useNavigate} from "react-router-dom";
-import login from "../Login/Login";
-import {useContext, useState} from "react";
-import {AuthContext} from "../../context/AuthContext";
+import axios from "axios";
+import {useState} from "react";
 
 function CreateNewAccount() {
     const {register, formState: {errors}, handleSubmit,watch} = useForm();
-    const navigate = useNavigate();
-    const {login, auth} = useContext(AuthContext)
     const [disable, setDisable] = useState(true)
 
     async function submit(data, e) {
@@ -50,8 +44,8 @@ function CreateNewAccount() {
     }
 
     function formChecker() {
-        const checkAuthoruty = watch("authority")
-        if (checkAuthoruty !== "Selecteer een rol") {
+        const checkAuthority = watch("authority")
+        if (checkAuthority !== "Selecteer een rol") {
             setDisable(false)
         } else {
             setDisable(true)

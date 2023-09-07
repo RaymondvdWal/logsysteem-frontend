@@ -5,13 +5,12 @@ import Button from "../../components/Button";
 import {useForm} from "react-hook-form";
 import axios from "axios";
 import Textarea from "../../components/Textarea";
-import {useContext, useState} from "react";
-import {AuthContext} from "../../context/AuthContext";
+import {useState} from "react";
 
 function CreateNewWorkstation() {
 
     const {register, handleSubmit, formState: {errors}, watch} = useForm()
-    const [disable, setDisaable] = useState(true)
+    const [disable, setDisable] = useState(true)
 
     async function createWorkstation(data, e) {
         try {
@@ -44,9 +43,9 @@ function CreateNewWorkstation() {
     function formChecker() {
         const validateLocation = watch("location")
         if (validateLocation !== "Selecteer een locatie"){
-            setDisaable(false)
+            setDisable(false)
         } else {
-            setDisaable(true)
+            setDisable(true)
         }
     }
 

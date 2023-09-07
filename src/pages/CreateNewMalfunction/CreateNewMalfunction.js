@@ -12,7 +12,7 @@ function CreateNewMalfunction() {
 
     const {register, handleSubmit, formState: {errors}, watch} = useForm()
     const {workstations} = useContext(WorkstationContext)
-    const [disable, setDisalble] = useState(true)
+    const [disable, setDisable] = useState(true)
 
     async function assignMalfunctionToWorkstation(response, data) {
         try{
@@ -71,9 +71,9 @@ function CreateNewMalfunction() {
         if (validateStatus !== "--- Wat is de status? ---" &&
             validateUrgency !== "--- Wat is de prioriteit? ---" &&
             validateWorkstation !== "Selecteer een werkplek") {
-            setDisalble(false)
+            setDisable(false)
         } else {
-            setDisalble(true)
+            setDisable(true)
         }
     }
 

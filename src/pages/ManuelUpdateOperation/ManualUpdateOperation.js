@@ -12,7 +12,7 @@ import {AuthContext} from "../../context/AuthContext";
 function ManualUpdateOperation() {
     const {register, handleSubmit, watch, formState: {errors}} = useForm()
     const {id} = useParams()
-    const {operation, setOperation} = useContext(OperationContext)
+    const {operation} = useContext(OperationContext)
     const {auth: {user}} = useContext(AuthContext)
     const [selectedStatus, setSelectedStatus] = useState()
     const navigate = useNavigate()

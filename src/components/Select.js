@@ -1,5 +1,5 @@
 
-function Select({children, errors, className,register, defaultValue,option, name, validation, value1, value2, value3, option1, option2, option3}) {
+function Select({children, errors, className,register, defaultValue,option, name, validation}) {
 
 
     return (

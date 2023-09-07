@@ -11,7 +11,6 @@ function Operation() {
     const [startTime, setStartTime] = useState()
     const [endTime, setEndTime] = useState()
     const UPDATE_URL = `http://localhost:8080/operation/${id}`
-    const dayTime = new Date();
     const dateTimeOptions ={
         weekday: "short",
         month: "long",
@@ -38,10 +37,10 @@ function Operation() {
             setOperation(response.data)
             if (response.data.operationPickedUp != null) {
                 const startTime = new Date(response.data.operationPickedUp)
-                const convertedstartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
+                const convertedStartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
                 console.log(startTime)
-                console.log(convertedstartTime)
-                setStartTime(convertedstartTime)
+                console.log(convertedStartTime)
+                setStartTime(convertedStartTime)
 
             }
             if (response.data.operationDone != null) {

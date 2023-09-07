@@ -38,10 +38,10 @@ function Malfunction() {
             setMalfunction(response.data)
             if (response.data.createMalfunction != null) {
                 const startTime = new Date(response.data.createMalfunction)
-                const convertedstartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
+                const convertedStartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
                 console.log(startTime)
-                console.log(convertedstartTime)
-                setStartTime(convertedstartTime)
+                console.log(convertedStartTime)
+                setStartTime(convertedStartTime)
 
             }
             if (response.data.updateMalfunction != null) {
