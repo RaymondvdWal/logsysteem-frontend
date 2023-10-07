@@ -26,7 +26,6 @@ function CreateNewWorkstation() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(response)
             alert(`Werkplek ${data.name} aangemaakt`)
             e.target[0].value="";
             e.target[1].value="";
@@ -35,7 +34,6 @@ function CreateNewWorkstation() {
             if (data.location === "Selecteer een locatie"){
                 alert("Selecteer een locatie!")
             }
-            console.log(data)
             console.error("failed", e)
         }
     }

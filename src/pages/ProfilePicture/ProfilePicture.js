@@ -21,7 +21,7 @@ function ProfilePicture() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }, responseType: "blob"
             })
-            console.log(data.data)
+
             const img = URL.createObjectURL(data.data)
             toggleAuth({
                 ...auth,
@@ -37,7 +37,7 @@ function ProfilePicture() {
                     profilePicture: img
                 }
             })
-            console.log(succes)
+
         } catch (e) {
             console.error("Er ging iets mis", e)
         }
@@ -52,8 +52,7 @@ function ProfilePicture() {
                 }, responseType: "blob"
             }))
             await assignPictureToUser(response, data)
-            console.log(user)
-            console.log(data)
+
         } catch (e) {
             console.error("Er ging iets mis", e)
         }
@@ -72,8 +71,7 @@ function ProfilePicture() {
                 }
                 })
             await getLoadProfilePicture(response)
-            console.log(data)
-            console.log(response)
+
         } catch (error) {
             console.error(error)
         }
@@ -81,7 +79,7 @@ function ProfilePicture() {
 
     function formatChecker() {
         const format = watch("pic")
-        console.log(format[0].type)
+
         if (format[0].name.match(/\.(jpg|jpeg|png|gif)$/)) {
             setDisable(false)
         } else {

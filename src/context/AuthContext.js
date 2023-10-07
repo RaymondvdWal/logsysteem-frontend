@@ -43,8 +43,6 @@ function AuthContextProvider({children}) {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(response)
-            console.log(response.data.authorities[0].authority)
             setAuthority(response.data.authorities[0].authority)
             localStorage.setItem("authority", response.data.authorities[0].authority)
         } catch (e) {
@@ -61,7 +59,6 @@ function AuthContextProvider({children}) {
                 }, responseType: "blob"
             }))
             const img = URL.createObjectURL(data.data)
-            console.log(data)
             toggleAuth({
                 ...auth,
                 isAuth: true,
@@ -85,14 +82,12 @@ function AuthContextProvider({children}) {
         localStorage.setItem("token", jwt)
         const decodedToken = jwt_decode(jwt)
         const URL = `http://localhost:8080/users/${decodedToken.sub}`
-        console.log(decodedToken)
         try {
             const {data:{username, email, firstname, lastname, password, profilePicture, workStation}} = await axios.get(URL,
                 {headers: {
                 "Content-Type" : "application/json",
                         Authorization: `Bearer ${jwt}`
             }})
-            console.log(profilePicture)
             await getAuthority()
            toggleAuth( {
                ...auth,

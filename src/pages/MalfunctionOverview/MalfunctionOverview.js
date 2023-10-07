@@ -32,10 +32,8 @@ function MalfunctionOverview() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            console.log(response)
 
             let uniqueData = [...new Map(response.data.map((item) => [item["id"], item])).values()]
-            console.log(uniqueData)
 
             const assignedData = uniqueData.filter((malfunction) => {
                 return malfunction.workStation
@@ -44,13 +42,7 @@ function MalfunctionOverview() {
             const malfunctionsAssignedToWorkstation = assignedData.filter((malfunction) => {
                 return malfunction.workStation.id == id
             })
-
-            console.log(malfunctionsAssignedToWorkstation)
-
-
-            console.log(assignedData)
             setMalfunctions(malfunctionsAssignedToWorkstation)
-            console.log(malfunctions)
         } catch (e) {
             console.error("failed", e)
         }

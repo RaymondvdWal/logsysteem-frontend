@@ -35,11 +35,9 @@ function WorkstationSelection() {
                     user: data.user
                 }
             })
-            console.log(data)
-            console.log(response)
+
             let uniqueData = [...new Map(data.map((item) => [item["id"], item])).values()]
-            console.log(uniqueData)
-            console.log(location)
+
             setWorkstation(uniqueData)
 
             if (uniqueData.length > 0 && location != null){
@@ -47,11 +45,7 @@ function WorkstationSelection() {
                     return workstation.location === location.toUpperCase()
                 })
                 setMyWorkstation(locationData)
-                console.log(myWorkstations)
-                console.log(workstations)
-                console.log(locationData)
             }
-
         } catch (e) {
             console.error("er ging iets mis", e)
         }

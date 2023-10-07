@@ -32,10 +32,8 @@ function OperationOverview() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            console.log(response)
 
             let uniqueData = [...new Map(response.data.map((item) => [item["id"], item])).values()]
-            console.log(uniqueData)
 
             const assignedData = uniqueData.filter((operation) => {
                 return operation.workStation
@@ -45,12 +43,8 @@ function OperationOverview() {
                 return operations.workStation.id == id
                 })
 
-            console.log(operationsAssignedToWorkstation)
-
-
-            console.log(assignedData)
             setOperations(operationsAssignedToWorkstation)
-            console.log(operations)
+
         } catch (e) {
             console.error("failed", e)
         }

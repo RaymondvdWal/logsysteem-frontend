@@ -33,13 +33,10 @@ function Operation() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            console.log(response)
             setOperation(response.data)
             if (response.data.operationPickedUp != null) {
                 const startTime = new Date(response.data.operationPickedUp)
                 const convertedStartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
-                console.log(startTime)
-                console.log(convertedStartTime)
                 setStartTime(convertedStartTime)
 
             }
@@ -65,7 +62,6 @@ function Operation() {
             })
             setOperation(response.data)
             await getOperation()
-            console.log(response)
         } catch (e) {
             console.error("failed", e)
         }

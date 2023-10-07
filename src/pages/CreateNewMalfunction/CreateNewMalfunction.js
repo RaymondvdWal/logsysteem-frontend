@@ -23,7 +23,6 @@ function CreateNewMalfunction() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(assignResponse)
         } catch (e) {
             console.error("failed", e)
         }
@@ -45,7 +44,6 @@ function CreateNewMalfunction() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(response)
             await assignMalfunctionToWorkstation(response, data)
             e.target[0].value = ""
             e.target[1].value = ""

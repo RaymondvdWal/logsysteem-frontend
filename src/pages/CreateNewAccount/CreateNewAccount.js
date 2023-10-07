@@ -28,7 +28,6 @@ function CreateNewAccount() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`
                 }
             })
-            console.log(response)
             alert(`user ${data.username} aangemaakt`)
             e.target[0].value="";
             e.target[1].value="";
@@ -38,8 +37,6 @@ function CreateNewAccount() {
             e.target[5].value="Selecteer een rol";
         }catch (error) {
             console.error("er is iets mis gegaan", error)
-            console.log(data)
-            console.log()
         }
     }
 

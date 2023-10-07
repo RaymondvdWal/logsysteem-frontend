@@ -16,17 +16,12 @@ function Login() {
                 username: data.username,
                 password: data.password,
             })
-            console.log(response)
-            console.log(response.data.jwt)
             login(response.data.jwt, "/location")
             e.target[0].value = "";
             e.target[1].value = "";
         } catch (error) {
             console.error("Onjuist username of wachtwoord", error)
         }
-        console.log(data)
-        console.log(data.username)
-        console.log(data.password)
     }
 
     return (

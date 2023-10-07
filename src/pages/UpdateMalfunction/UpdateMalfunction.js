@@ -30,7 +30,7 @@ function UpdateMalfunction() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            console.log(response)
+
             navigate(`/malfunction/${id}`)
         } catch (e) {
             console.error("failed", e)

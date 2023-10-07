@@ -63,7 +63,6 @@ function CreateNewOperation() {
 
     function formChecker() {
         const validateAuthority = watch("workstation")
-        console.log(validateAuthority)
         if (validateAuthority !== "Selecteer een werkplek") {
             setDisable(false)
         } else {

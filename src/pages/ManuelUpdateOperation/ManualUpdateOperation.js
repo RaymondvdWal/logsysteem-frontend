@@ -36,7 +36,6 @@ function ManualUpdateOperation() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            console.log(response)
             navigate(`/operation/${id}`)
         } catch (e) {
             console.error("failed", e)
@@ -45,7 +44,6 @@ function ManualUpdateOperation() {
 
     function statusChecker() {
         const selectedStatus = watch("status", "default")
-        console.log(selectedStatus)
         setSelectedStatus(selectedStatus)
     }
 

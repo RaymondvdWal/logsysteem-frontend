@@ -34,13 +34,10 @@ function Malfunction() {
                     Authorization: `Bearer ${localStorage.getItem("token")}`,
                 }, responseType: "json"
             })
-            console.log(response)
             setMalfunction(response.data)
             if (response.data.createMalfunction != null) {
                 const startTime = new Date(response.data.createMalfunction)
                 const convertedStartTime = startTime.toLocaleTimeString("nl-NL", dateTimeOptions)
-                console.log(startTime)
-                console.log(convertedStartTime)
                 setStartTime(convertedStartTime)
 
             }
@@ -67,7 +64,6 @@ function Malfunction() {
             })
             setMalfunction(response.data)
             await getMalfunction()
-            console.log(response)
         } catch (e) {
             console.error("failed", e)
         }
